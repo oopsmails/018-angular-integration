@@ -27,10 +27,49 @@ ng g c core\components\home
 ng g c core\components\navbar-bs
 ng g c core\components\not-found
 
-
-
 npm i --save @ng-bootstrap/ng-bootstrap
 npm i --save @angular/cdk @angular/material @angular/animations hammerjs
+
+----
+
+ng g c shared\common\error-display
+
+ng g m progressing
+ng g c progressing\components\courses
+ng g c progressing\components\progressing-home
+
+ng g s shared\services\user-token\user-token
+
+====> to use "`import { Course, UserTokens } from '@shared/model';`"
+instead of using "`../../../sharded/model`".
+
+or `import { Course, UserTokens } from '@app/shared/model'`;
+
+tsconfig.json:
+
+"baseUrl": "./src",
+.... ....
+"paths": {
+    "@app/*": [
+    "app/*"
+    ],
+    "@core/*": [
+    "app/core/*"
+    ],
+    "@environment/*": [
+    "environments/*"
+    ],
+    "@shared/*": [
+    "app/shared/*"
+    ],
+    "@progressing/*": [
+    "app/progressing/*"
+    ]
+}
+
+----
+
+
 
 ----
 add icon to navigation bar. Since bootstrap dropped glyphicon, so, we need install 
@@ -105,8 +144,16 @@ seeing following in log ...
 [HPM] POST /backendmock/downloadFile/txt?filename=testTxt.txt -> http://localhost:8080
 
 =======================================================
+====> Problem: rxjs has no exported member observable
 
+-- Using RxJS 6. Just replace
+```import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs/observable/of';```
+by
+`import { Observable, of } from 'rxjs';`
 
+-- npm install rxjs-compat --save, just for types.
+"rxjs-compat": "^6.4.0",
 
 
 
