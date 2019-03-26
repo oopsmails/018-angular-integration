@@ -2,13 +2,27 @@ Copied from oopsmails/angular-05/integration/README.md
 
 
 ====================================================
+**Install Angular and create new project**
+
 ng new integration
 cd integration
 
+**Install bootstrap**
+npm install bootstrap --save
+Open the angular.json file and add ./node_modules/bootstrap/dist/css/bootstrap.min.css to the styles array:
+
+"styles": [ 
+    "src/styles.css", 
+    "./node_modules/bootstrap/dist/css/bootstrap.min.css" 
+],
+
+**Create project structure (as before)**
 ng g m core
 ng g m shared
 
+ng g c core\components\home
 ng g c core\components\navbar-bs
+ng g c core\components\not-found
 
 npm install --save bootstrap@next
 
