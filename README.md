@@ -9,6 +9,9 @@ cd integration
 
 **Install bootstrap**
 npm install bootstrap --save
+or
+npm install --save bootstrap@next
+
 Open the angular.json file and add ./node_modules/bootstrap/dist/css/bootstrap.min.css to the styles array:
 
 "styles": [ 
@@ -24,10 +27,9 @@ ng g c core\components\home
 ng g c core\components\navbar-bs
 ng g c core\components\not-found
 
-npm install --save bootstrap@next
+
 
 npm i --save @ng-bootstrap/ng-bootstrap
-
 npm i --save @angular/cdk @angular/material @angular/animations hammerjs
 
 ----
