@@ -10,17 +10,18 @@ cd integration
 ```
 
 **Install bootstrap**
+```
 npm install bootstrap --save
 or
 npm install --save bootstrap@next
-
+```
 Open the angular.json file and add ./node_modules/bootstrap/dist/css/bootstrap.min.css to the styles array:
-
+```
 "styles": [ 
     "src/styles.css", 
     "./node_modules/bootstrap/dist/css/bootstrap.min.css" 
 ],
-
+```
 **Create project structure (as before)**
 ```
 ng g m core
@@ -93,15 +94,16 @@ See, CoursesComponent and courses.component.html
 `<ng-container *ngIf="oauthToken">`
 
 ====> nav-bar, dropdown not working ...
-npm i --save @ng-bootstrap/ng-bootstrap
+
+`npm i --save @ng-bootstrap/ng-bootstrap`
 
 navbar-bs:
 
 -- routerLink not working: 
-need to add RouterModule.forChild([]) in core.module.ts, because using routerLink="...".
+need to add `RouterModule.forChild([])` in core.module.ts, because using routerLink="...".
 
 -- dropdown not working: 
-need to add NgbModule.forRoot().ngModule in shared.module.ts and then add SharedModule
+need to add `NgbModule.forRoot().ngModule in shared.module.ts` and then add SharedModule
 in core.module.ts, because 
 <div ngbDropdownMenu ...
 
@@ -159,7 +161,7 @@ response.setHeader("Access-Control-Allow-Origin", "*"); //ok, without WebMvcConf
 --> option 2: Client side: Angular,
 a. Add proxy.conf.json in the same folder which package.json resides.
 b. package.json, script,
-"start": "ng serve --proxy-config proxy.conf.json",
+`"start": "ng serve --proxy-config proxy.conf.json",`
 c. Define URL ...
  private txtUrl = '/backendmock/downloadFile/txt?filename=testTxt.txt'; // with proxy.conf.json
  vs.
