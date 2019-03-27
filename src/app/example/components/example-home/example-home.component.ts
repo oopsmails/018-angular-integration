@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-progressing-home',
-  templateUrl: './progressing-home.component.html',
-  styleUrls: ['./progressing-home.component.scss']
+  selector: 'app-example-home',
+  templateUrl: './example-home.component.html'
 })
-export class ProgressingHomeComponent implements OnInit {
+export class ExampleHomeComponent implements OnInit {
   title = 'app';
   post = {
     title: 'Title',

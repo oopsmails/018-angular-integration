@@ -1,24 +1,26 @@
 import { Component, OnInit } from '@angular/core';
-
-import { Course, UserTokens } from '@app/shared/model';
-import { CoursesService } from './courses.service';
-import { UserTokenService } from '@app/shared/services/user-token/user-token.service';
+import { Course } from '@app/shared/model';
 import { OauthToken } from '@app/shared/model/oauthToken';
+import { UserTokenService } from '@app/shared/services/user-token/user-token.service';
+import { CoursesService } from './courses.service';
+
 
 @Component({
   selector: 'app-courses',
-  templateUrl: './courses.component.html',
-  styleUrls: ['./courses.component.scss']
+  templateUrl: './courses.component.html'
 })
 export class CoursesComponent implements OnInit {
   courses: Course[];
-  userTokens: UserTokens;
   oauthToken: OauthToken;
-
   constructor(
     private coursesService: CoursesService,
     private usertokenService: UserTokenService
   ) { }
+
+  ngOnInit(): void {
+    this.courses = this.coursesService.getCourses();
+    this.loadUserTokens();
+  }
 
   loadUserTokens(): void {
     this.usertokenService.getUserToken() //
@@ -27,10 +29,4 @@ export class CoursesComponent implements OnInit {
           console.log(err);
         });
   }
-
-  ngOnInit() {
-    this.courses = this.coursesService.getCourses();
-    this.loadUserTokens();
-  }
-
 }

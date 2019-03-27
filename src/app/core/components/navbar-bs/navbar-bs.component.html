@@ -21,25 +21,26 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/sandbox/home">Sandbox Home</a>
+          <a class="nav-link" routerLink="/example/home">Example</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/progressing/home">Progressing Home</a>
+          <a class="nav-link" routerLink="/sandbox/home">Sandbox</a>
         </li>
       </ul>
       <ul class="navbar-nav">
         <li ngbDropdown *ngIf="includeSandbox" class="nav-item dropdown">
           <a ngbDropdownToggle class="nav-link dropdown-toggle" id="navDropdownSandbox" 
             role="botton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Sandbox
+            GOTO
           </a>
           <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="navDropdownSandbox">
+            <a class="dropdown-item" routerLink="/sandbox/livedata">Live Data</a>
             <a class="dropdown-item" routerLink="/sandbox/jokelist">Joke List(@ViewChild)</a>
             <a class="dropdown-item" routerLink="/sandbox/home">SandboxHome-LiveUpdate-ChangeDetector</a>
             <a class="dropdown-item" routerLink="/sandbox/svgcircle">SVG Spinner</a>
             <a class="dropdown-item" routerLink="/sandbox/svgcircleok">SVG Spinner OK</a>
-            <a class="dropdown-item" routerLink="progressing/pagination">Pagination</a>
-            <a class="dropdown-item" routerLink="progressing/3ways">3 Ways</a>
+            <a class="dropdown-item" routerLink="example/pagination">Pagination</a>
+            <a class="dropdown-item" routerLink="example/3ways">3 Ways</a>
             <a class="dropdown-item" (click)="logout()">Log Out</a>
           </div>
         </li>

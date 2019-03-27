@@ -31,8 +31,11 @@
       "@shared/*": [
         "app/shared/*"
       ],
-      "@progressing/*": [
-        "app/progressing/*"
+      "@sandbox/*": [
+        "app/sandbox/*"
+      ],
+      "@example/*": [
+        "app/example/*"
       ]
     }
   }
