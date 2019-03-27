@@ -1,0 +1,71 @@
+<hr>
+<hr>
+<hr>
+<!-- <h3>Sandbox Home</h3> -->
+
+<div class="starter-template">
+  <h1>Sandbox Home</h1>
+</div>
+
+<h3>Live Update:</h3>
+<br>
+<input type="checkbox" [(ngModel)]="live">
+<br>
+<live-data [live]="live"></live-data>
+<br> live: {{ live }}
+
+<br>
+<hr>
+<br>
+
+
+<h3>Live Update2:</h3>
+<br>
+<input type="checkbox" [(ngModel)]="live2">
+<br>
+<live-data2 [live]="live2"></live-data2>
+<br> live2: {{ live2 }}
+
+<br>
+<hr>
+<br>
+
+<h3>Messaging between components ... </h3>
+<h5>Click radio button below to see message passed between MsgBetweenComponent and MsgChildComponent.</h5>
+<app-msg-between></app-msg-between>
+<hr>
+<!-- also ok if put child component here, broadcasting!!!!!!. <app-msg-child></app-msg-child> -->
+
+<br>
+<hr>
+<br>
+
+<!-- <h3>File downloading with direct httpClient call ...</h3>
+<file-download></file-download> -->
+
+<!-- <div *ngFor="let format of fileFormats" class="radio">
+  <label>
+    <input ngModel type="radio" name="format" [value]="format" (change)="fileFormatSelected(format)">
+    {{ format }}
+  </label>
+</div> -->
+
+<br>
+<hr>
+<br>
+
+
+
+<br>
+<hr>
+<br>
+
+<!-- <h3>File downloading with old iFrame style ...</h3> -->
+<!-- <div *ngFor="let format of downloadFileFormats" class="radio">
+  <label>
+    <input ngModel type="radio" name="downloadformat" [value]="format" (change)="downFileFormatSelected(format)">
+    {{ format }}
+  </label>
+</div>  -->
+
+<!-- <app-file-download-iframe></app-file-download-iframe> -->

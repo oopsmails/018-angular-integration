@@ -2,19 +2,104 @@ Copied from oopsmails/angular-05/integration/README.md
 
 
 ====================================================
+**Install Angular and create new project**
+
 ng new integration
 cd integration
 
-ng g m core
-ng g m shared
-
-ng g c core\components\navbar-bs
-
+**Install bootstrap**
+npm install bootstrap --save
+or
 npm install --save bootstrap@next
 
-npm i --save @ng-bootstrap/ng-bootstrap
+Open the angular.json file and add ./node_modules/bootstrap/dist/css/bootstrap.min.css to the styles array:
+
+"styles": [ 
+    "src/styles.css", 
+    "./node_modules/bootstrap/dist/css/bootstrap.min.css" 
+],
+
+**Create project structure (as before)**
+ng g m core
+
+ng g c core\components\home
+ng g c core\components\navbar-bs
+ng g c core\components\not-found
+
 
 npm i --save @angular/cdk @angular/material @angular/animations hammerjs
+
+----
+
+ng g m shared
+ng g s shared\services\user-token\user-token
+ng g s shared\services\window-provider
+
+ng g m example
+ng g c example\components\example-home
+ng g c example\components\generic\courses
+ng g c example\components\view-child\joke
+ng g c example\components\view-child\joke-list
+ng g c example\components\view-child\joke-list-parent
+
+
+ng g m sandbox
+ng g c sandbox\components\sandbox-home
+ng g c sandbox\components\change-detector\live-data
+ng g s sandbox\services\data-provider
+
+ng g c sandbox\components\msg-between
+ng g s sandbox\services\file-download
+
+ng g c sandbox\components\msg-between\msg-child
+
+
+====> to use "`import { Course, UserTokens } from '@shared/model';`"
+instead of using "`../../../sharded/model`".
+
+or `import { Course, UserTokens } from '@app/shared/model'`;
+
+tsconfig.json:
+
+"baseUrl": "./src",
+.... ....
+"paths": {
+    "@app/*": [
+    "app/*"
+    ],
+    "@core/*": [
+    "app/core/*"
+    ],
+    "@environment/*": [
+    "environments/*"
+    ],
+    "@shared/*": [
+    "app/shared/*"
+    ],
+    "@progressing/*": [
+    "app/progressing/*"
+    ]
+}
+
+----
+
+====> Resolving the error "http call in ngOnInit(), seeing undefined error in console"
+See, CoursesComponent and courses.component.html
+
+`<ng-container *ngIf="oauthToken">`
+
+====> nav-bar, dropdown not working ...
+npm i --save @ng-bootstrap/ng-bootstrap
+
+navbar-bs:
+
+-- routerLink not working: 
+need to add RouterModule.forChild([]) in core.module.ts, because using routerLink="...".
+
+-- dropdown not working: 
+need to add NgbModule.forRoot().ngModule in shared.module.ts and then add SharedModule
+in core.module.ts, because 
+<div ngbDropdownMenu ...
 
 ----
 add icon to navigation bar. Since bootstrap dropped glyphicon, so, we need install 
@@ -28,15 +113,7 @@ font-awesome.
 
 ----
 
-navbar-bs:
 
--- routerLink not working: 
-need to add RouterModule.forChild([]) in core.module.ts, because using routerLink="...".
-
--- dropdown not working: 
-need to add NgbModule.forRoot().ngModule in shared.module.ts and then add SharedModule
-in core.module.ts, because 
-<div ngbDropdownMenu ...
 
 
 =======================================================
@@ -89,8 +166,16 @@ seeing following in log ...
 [HPM] POST /backendmock/downloadFile/txt?filename=testTxt.txt -> http://localhost:8080
 
 =======================================================
+====> Problem: rxjs has no exported member observable
 
+-- Using RxJS 6. Just replace
+```import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs/observable/of';```
+by
+`import { Observable, of } from 'rxjs';`
 
+-- npm install rxjs-compat --save, just for types.
+"rxjs-compat": "^6.4.0",
 
 
 

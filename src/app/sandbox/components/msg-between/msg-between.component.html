@@ -1,0 +1,8 @@
+<div *ngFor="let format of downloadFileFormats" class="radio">
+  <label>
+    <input ngModel type="radio" name="downloadformat" [value]="format" (change)="downFileFormatSelected(format)">
+    {{ format }}
+  </label>
+</div>
+
+<app-msg-child></app-msg-child>
