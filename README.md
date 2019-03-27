@@ -4,8 +4,10 @@ Copied from oopsmails/angular-05/integration/README.md
 ====================================================
 **Install Angular and create new project**
 
+```
 ng new integration
 cd integration
+```
 
 **Install bootstrap**
 npm install bootstrap --save
@@ -20,6 +22,7 @@ Open the angular.json file and add ./node_modules/bootstrap/dist/css/bootstrap.m
 ],
 
 **Create project structure (as before)**
+```
 ng g m core
 
 ng g c core\components\home
@@ -52,7 +55,7 @@ ng g c sandbox\components\msg-between
 ng g s sandbox\services\file-download
 
 ng g c sandbox\components\msg-between\msg-child
-
+```
 
 ====> to use "`import { Course, UserTokens } from '@shared/model';`"
 instead of using "`../../../sharded/model`".
@@ -61,6 +64,7 @@ or `import { Course, UserTokens } from '@app/shared/model'`;
 
 tsconfig.json:
 
+```
 "baseUrl": "./src",
 .... ....
 "paths": {
@@ -80,7 +84,7 @@ tsconfig.json:
     "app/progressing/*"
     ]
 }
-
+```
 ----
 
 ====> Resolving the error "http call in ngOnInit(), seeing undefined error in console"
@@ -127,6 +131,7 @@ Failed to load http://localhost:8080/backendmock/downloadFile/docx?filename=test
 
 Solution 1:
 Application configuration level, SpringBootBackendMockApplication, 
+```
 @Bean
 public WebMvcConfigurer corsConfigurer() {
     return new WebMvcConfigurerAdapter() {
@@ -139,17 +144,18 @@ public WebMvcConfigurer corsConfigurer() {
         }
     };
 }
-
+```
 Solution 2:
+```
 @RestController
 @RequestMapping("/backendmock")
 @CrossOrigin <-------------------------- add this
 public class StreamingResponseBodyController
-
+```
 Solution 3:
-
+```
 response.setHeader("Access-Control-Allow-Origin", "*"); //ok, without WebMvcConfigurer in SpringBootBackendMockApplication
-
+```
 --> option 2: Client side: Angular,
 a. Add proxy.conf.json in the same folder which package.json resides.
 b. package.json, script,
