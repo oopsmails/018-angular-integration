@@ -169,10 +169,10 @@ c. Define URL ...
 d. use "npm start" to start server instead of "ng serve"
 
 seeing following in log ...
-
+```
 [HPM] POST /backendmock/downloadFile/xlsx?filename=testXlsx.xlsx -> http://localhost:8080
 [HPM] POST /backendmock/downloadFile/txt?filename=testTxt.txt -> http://localhost:8080
-
+```
 =======================================================
 ====> Problem: rxjs has no exported member observable
 
