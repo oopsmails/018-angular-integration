@@ -4,22 +4,26 @@ Copied from oopsmails/angular-05/integration/README.md
 ====================================================
 **Install Angular and create new project**
 
+```
 ng new integration
 cd integration
+```
 
 **Install bootstrap**
+```
 npm install bootstrap --save
 or
 npm install --save bootstrap@next
-
+```
 Open the angular.json file and add ./node_modules/bootstrap/dist/css/bootstrap.min.css to the styles array:
-
+```
 "styles": [ 
     "src/styles.css", 
     "./node_modules/bootstrap/dist/css/bootstrap.min.css" 
 ],
-
+```
 **Create project structure (as before)**
+```
 ng g m core
 
 ng g c core\components\home
@@ -52,7 +56,7 @@ ng g c sandbox\components\msg-between
 ng g s sandbox\services\file-download
 
 ng g c sandbox\components\msg-between\msg-child
-
+```
 
 ====> to use "`import { Course, UserTokens } from '@shared/model';`"
 instead of using "`../../../sharded/model`".
@@ -61,6 +65,7 @@ or `import { Course, UserTokens } from '@app/shared/model'`;
 
 tsconfig.json:
 
+```
 "baseUrl": "./src",
 .... ....
 "paths": {
@@ -80,7 +85,7 @@ tsconfig.json:
     "app/progressing/*"
     ]
 }
-
+```
 ----
 
 ====> Resolving the error "http call in ngOnInit(), seeing undefined error in console"
@@ -89,15 +94,16 @@ See, CoursesComponent and courses.component.html
 `<ng-container *ngIf="oauthToken">`
 
 ====> nav-bar, dropdown not working ...
-npm i --save @ng-bootstrap/ng-bootstrap
+
+`npm i --save @ng-bootstrap/ng-bootstrap`
 
 navbar-bs:
 
 -- routerLink not working: 
-need to add RouterModule.forChild([]) in core.module.ts, because using routerLink="...".
+need to add `RouterModule.forChild([])` in core.module.ts, because using routerLink="...".
 
 -- dropdown not working: 
-need to add NgbModule.forRoot().ngModule in shared.module.ts and then add SharedModule
+need to add `NgbModule.forRoot().ngModule in shared.module.ts` and then add SharedModule
 in core.module.ts, because 
 <div ngbDropdownMenu ...
 
@@ -127,6 +133,7 @@ Failed to load http://localhost:8080/backendmock/downloadFile/docx?filename=test
 
 Solution 1:
 Application configuration level, SpringBootBackendMockApplication, 
+```
 @Bean
 public WebMvcConfigurer corsConfigurer() {
     return new WebMvcConfigurerAdapter() {
@@ -139,21 +146,22 @@ public WebMvcConfigurer corsConfigurer() {
         }
     };
 }
-
+```
 Solution 2:
+```
 @RestController
 @RequestMapping("/backendmock")
 @CrossOrigin <-------------------------- add this
 public class StreamingResponseBodyController
-
+```
 Solution 3:
-
+```
 response.setHeader("Access-Control-Allow-Origin", "*"); //ok, without WebMvcConfigurer in SpringBootBackendMockApplication
-
+```
 --> option 2: Client side: Angular,
 a. Add proxy.conf.json in the same folder which package.json resides.
 b. package.json, script,
-"start": "ng serve --proxy-config proxy.conf.json",
+`"start": "ng serve --proxy-config proxy.conf.json",`
 c. Define URL ...
  private txtUrl = '/backendmock/downloadFile/txt?filename=testTxt.txt'; // with proxy.conf.json
  vs.
@@ -161,10 +169,10 @@ c. Define URL ...
 d. use "npm start" to start server instead of "ng serve"
 
 seeing following in log ...
-
+```
 [HPM] POST /backendmock/downloadFile/xlsx?filename=testXlsx.xlsx -> http://localhost:8080
 [HPM] POST /backendmock/downloadFile/txt?filename=testTxt.txt -> http://localhost:8080
-
+```
 =======================================================
 ====> Problem: rxjs has no exported member observable
 
