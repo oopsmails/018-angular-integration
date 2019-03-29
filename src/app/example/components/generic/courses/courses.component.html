@@ -1,4 +1,4 @@
-<ng-container *ngIf="oauthToken">
+<ng-container>
   <h2>Course List</h2>
   <ul>
     <li *ngFor="let course of courses">
@@ -10,17 +10,4 @@
   <hr>
   <br>
 
-  <h2>OAuth2 Token</h2>
-  {{oauthToken.access_token}}
-
-  <br>
-  <hr>
-  <br>
-
-  <h2>User Token List</h2>
-  <ul>
-    <li *ngFor="let token of userTokens">
-      {{token}}
-    </li>
-  </ul>
 </ng-container>

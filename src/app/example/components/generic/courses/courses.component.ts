@@ -11,22 +11,11 @@ import { CoursesService } from './courses.service';
 })
 export class CoursesComponent implements OnInit {
   courses: Course[];
-  oauthToken: OauthToken;
-  constructor(
-    private coursesService: CoursesService,
-    private usertokenService: UserTokenService
-  ) { }
+  
+  constructor(private coursesService: CoursesService) { }
 
   ngOnInit(): void {
     this.courses = this.coursesService.getCourses();
-    this.loadUserTokens();
   }
 
-  loadUserTokens(): void {
-    this.usertokenService.getUserToken() //
-      .subscribe(oauthToken => this.oauthToken = oauthToken, // Bind to view
-        err => {
-          console.log(err);
-        });
-  }
 }

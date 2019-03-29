@@ -1,30 +1,29 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { UserTokens } from '@app/shared/model';
-import { Observable } from 'rxjs';
 import { OauthToken } from '@app/shared/model/oauthToken';
+import { Observable } from 'rxjs';
+
+export enum ClientType {
+  SPRING_CLOUND_EMPLOYEE_SERVICE = 'SPRING_CLOUND_EMPLOYEE_SERVICE',
+  SPRING_CLOUND_DEPARTMENT_SERVICE = 'SPRING_CLOUND_DEPARTMENT_SERVICE'
+}
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserTokenService {
-  private userTokensUrl = '/uaa/oauth/token';
-
   constructor(private httpClient: HttpClient) { }
 
-  getUserToken(): Observable<OauthToken> {
-    const headers = new HttpHeaders({
-      'Content-type': 'application/x-www-form-urlencoded; charset=utf-8',
-      Authorization: 'Basic ' + btoa('demops:my_secret')
-    });
+  getUserTokenSpringCloundAll(): Observable<OauthToken> {
+    return this.getUserToken(ClientType.SPRING_CLOUND_EMPLOYEE_SERVICE);
+  }
 
-    const params = new URLSearchParams();
-    params.append('username', 'user');
-    params.append('password', 'password');
-    params.append('grant_type', 'password');
-    params.append('client_id', 'demops');
+  getUserToken(clientType: ClientType): Observable<OauthToken> {
+    const headers = this.getAuthHeaders(clientType);
+    const params = this.getAuthParams(clientType);
 
-    return this.httpClient.post(this.userTokensUrl,
+    return this.httpClient.post<OauthToken>(this.getAuthUrl(clientType),
       params.toString(),
       { headers });
 
@@ -43,5 +42,37 @@ export class UserTokenService {
     //       password: 'password'
     //     }
     //   });
+  }
+
+  private getAuthHeaders(clientType: ClientType): HttpHeaders {
+    let headers = new HttpHeaders();
+
+    if (ClientType.SPRING_CLOUND_EMPLOYEE_SERVICE === clientType) {
+      headers = new HttpHeaders({
+        'Content-type': 'application/x-www-form-urlencoded; charset=utf-8',
+        Authorization: 'Basic ' + btoa('demops:my_secret')
+      });
+      return headers;
+    }
+  }
+
+  private getAuthParams(clientType: ClientType): URLSearchParams {
+    const params = new URLSearchParams();
+
+    if (ClientType.SPRING_CLOUND_EMPLOYEE_SERVICE === clientType) {
+      params.append('username', 'user');
+      params.append('password', 'password');
+      params.append('grant_type', 'password');
+      params.append('client_id', 'demops');
+      return params;
+    }
+  }
+
+  private getAuthUrl(clientType: ClientType): string {
+    if (ClientType.SPRING_CLOUND_EMPLOYEE_SERVICE === clientType) {
+      return '/uaa/oauth/token';
+    }
+
+    return '';
   }
 }
