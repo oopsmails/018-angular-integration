@@ -2,6 +2,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { OauthToken } from '@app/shared/model/oauthToken';
 import { Observable } from 'rxjs';
+import { ConfigurationService } from '@app/services/configuration.service';
+import { Configuration } from '@app/model/configuration';
 
 export enum ClientType {
   SPRING_CLOUND_EMPLOYEE_SERVICE = 'SPRING_CLOUND_EMPLOYEE_SERVICE',
@@ -13,7 +15,13 @@ export enum ClientType {
   providedIn: 'root'
 })
 export class UserTokenService {
-  constructor(private httpClient: HttpClient) { }
+  private configuration: Configuration;
+
+  constructor(
+    private configurationService: ConfigurationService,
+    private httpClient: HttpClient) {
+      this.configuration = configurationService.config;
+    }
 
   getUserTokenSpringCloundAll(): Observable<OauthToken> {
     return this.getUserToken(ClientType.SPRING_CLOUND_EMPLOYEE_SERVICE);
@@ -70,7 +78,7 @@ export class UserTokenService {
 
   private getAuthUrl(clientType: ClientType): string {
     if (ClientType.SPRING_CLOUND_EMPLOYEE_SERVICE === clientType) {
-      return '/uaa/oauth/token';
+      return this.configuration.springCloudAllOauthTokenUrl; // '/uaa/oauth/token';
     }
 
     return '';

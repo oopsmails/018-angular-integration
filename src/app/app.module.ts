@@ -6,6 +6,8 @@ import { CoreModule } from './core/core.module';
 import { ExampleModule } from './example/example.module';
 import { SandboxModule } from './sandbox/sandbox.module';
 import { SharedModule } from './shared/shared.module';
+import { ConfigurationService } from '@app/services/configuration.service';
+import { APP_INITIALIZER } from '@angular/core';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,16 @@ import { SharedModule } from './shared/shared.module';
     ExampleModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    ConfigurationService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: (configurationService: ConfigurationService) =>
+          () => configurationService.loadConfigurationData(),
+      deps: [ConfigurationService],
+      multi: true
+  }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

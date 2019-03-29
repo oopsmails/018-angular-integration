@@ -24,6 +24,8 @@ Open the angular.json file and add ./node_modules/bootstrap/dist/css/bootstrap.m
 ```
 **Create project structure (as before)**
 ```
+ng g s services\configuration
+
 ng g m core
 
 ng g c core\components\home
@@ -49,6 +51,8 @@ ng g c example\components\view-child\joke-list-parent
 ng g c example\components\generic\employee\employee-list
 ng g s example\components\generic\employee\employee
 ng g c example\components\generic\employee\oauth-token
+ng g c example\components\blogger
+??ng g c example\components\component-communication
 
 ng g m sandbox
 ng g c sandbox\components\sandbox-home
@@ -235,7 +239,17 @@ by
 -- npm install rxjs-compat --save, just for types.
 `"rxjs-compat": "^6.4.0",`
 
+=======================================================
 
+**In This Repository**
+
+====> 3 Ways to Pass Async Data to Angular + Child Components
+path: 'example/3ways', component: PageThreeWaysComponent
+
+From: https://scotch.io/tutorials/3-ways-to-pass-async-data-to-angular-2-child-components 
+
+====> OAuth2, grand_type: password, with backend Auth Server (Spring Clound)
+path: 'example/employees', component: EmployeeListComponent
 
 
 =======================================================

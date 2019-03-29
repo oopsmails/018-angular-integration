@@ -1,0 +1,5 @@
+{
+    "springCloudAllBaseUrl": "http://localhost:9090",
+    "springCloudAllOauthTokenUrl": "/uaa/oauth/token",
+    "springCloundEmployeeServiceUrl": "/employee"
+}

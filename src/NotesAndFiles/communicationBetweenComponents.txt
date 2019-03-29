@@ -1,0 +1,67 @@
+
+https://stackoverflow.com/questions/51769518/child-parent-communication-best-practices-in-angular
+
+Topic: Child parent communication best practices in Angular
+
+Obviously it depends on what you want to do.
+
+@Input
+
+By using @Input you are passing a parameter to a child component directly. Moreover you are coupling components by putting one inside the other. This approach is useful and simple.
+
+It is a good approach when you want to ensure that a child component is integrated into a parent component that share a particular object and you don't have to care about synchronism mechanisms.
+
+That means that if you change a property of the object, the object reference is still the same, so it is updated into parent and component. But if you change object reference (for example instantiating a new one or retrieving a new object by a remote service) in one component, the other one can't detect object change, so you will have a data misalignment.
+
+@Output
+
+By using @Output you are emitting an event upwards, so this approach is useful when you want to communicate to the parent that something is happened. Data exchange is possible but it is not the focus of the thing.
+
+The focus is that something is happened, for example in a wizard you could have some step and each step can advise parent component that that particular step is completed. Parent does not need to know what how is happened, but only that is happened so it can go to the next step.
+
+@ViewChild
+
+By using @ViewChild you are getting child component reference into parent component.
+
+You are forcing the parent to have a particular child component to work by mixing their logic.
+
+This is useful when you want to call some method of the child component into the parent component.
+
+Using the wizard example you can think about this situation:
+
+we have 3 step
+3rd step completes and emits an @Output event to the parent
+parent catches the event and tries to save data
+data saving ok => parent tells last step component to show successful message or
+data saving fail => parent tells last step component to show fail message
+Service
+
+By using an external service you are centralizing data into one external object that is responsible to manage and update data.
+
+This is a good approach for situations in which data can be retrieven from remote services or data object references can be reassigned.
+
+Moreover by this approach you are decoupling all your components from each other. They can work without worry themselves about others' behaviours.
+
+Generally Subject are used into service communication.
+
+You can find doc here
+
+Subject VS @Output
+
+Subject uses a data driven approach. @Output uses an event driven approach, or better a Reactive Programming approach
+
+So meanwhile @Output is the preferred way when you want to communicate that an event is happened, Subject is the preferred approach to communicate that data are changed.
+
+A Subject is both a source of observable values and an Observable itself. You can subscribe to a Subject as you would any Observable.
+
+That means that you can use Subject to observe a particular variable or value (Subject as Observer), it detects observed value changes and emits a sort of event.
+
+In the meanwhile you can have many other observer that are observing the  Subject (Subject as Observable) by subscribing to subject's events.
+
+When subject observed value changes, all subject's subscribers are advised.
+
+An example could be a ticketing application. One user loads the component responsible of showing free remaining places. He is thinking on which place to choose. In the meanwhile another user buy a ticket, so his place is now unavailable. First user now should see that place as unavailable, so you need to refresh data asking them to remote services (maybe with a polling alghoritm). When new data are retrieven you pass new data into Subject.next(). Subject detects that observed value is changed and advices all his subscribers that the value is changed. Obviously Subject pass new data to subscribers.
+
+
+
+
