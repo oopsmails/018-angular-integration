@@ -9,6 +9,7 @@ import { UserTokenService } from '@app/shared/services/user-token/user-token.ser
 export class OauthTokenComponent implements OnInit {
 
   oauthToken: OauthToken;
+  userTokens = new Array<string>();
 
   constructor(private usertokenService: UserTokenService) { }
 
@@ -21,6 +22,8 @@ export class OauthTokenComponent implements OnInit {
       .subscribe(oauthToken => {
         this.oauthToken = oauthToken;
         window.sessionStorage.setItem('token', JSON.stringify(oauthToken));
+        this.userTokens.push(oauthToken.access_token);
+        this.userTokens.push(oauthToken.refresh_token);
       },
         err => {
           console.log(err);

@@ -52,7 +52,7 @@ ng g c example\components\generic\employee\employee-list
 ng g s example\components\generic\employee\employee
 ng g c example\components\generic\employee\oauth-token
 ng g c example\components\blogger
-??ng g c example\components\component-communication
+ng g c example\components\rxjs-home
 
 ng g m sandbox
 ng g c sandbox\components\sandbox-home
