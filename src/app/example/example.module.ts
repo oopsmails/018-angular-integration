@@ -19,6 +19,7 @@ import { OauthTokenComponent } from './components/generic/employee/oauth-token/o
 import { JokeListParentComponent } from './components/view-child/joke-list-parent/joke-list-parent.component';
 import { JokeListComponent } from './components/view-child/joke-list/joke-list.component';
 import { JokeComponent } from './components/view-child/joke/joke.component';
+import { RxjsHomeComponent } from './components/rxjs-home/rxjs-home.component';
 
 
 
@@ -43,7 +44,8 @@ const routes: Routes = [
     JokeListParentComponent,
     EmployeeListComponent,
     PageThreeWaysComponent, BloggerComponent, Posts1Component, Posts2Component, Posts3Component,
-    OauthTokenComponent
+    OauthTokenComponent,
+    RxjsHomeComponent
   ],
   exports: [
     ExampleHomeComponent,

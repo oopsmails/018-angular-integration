@@ -6,9 +6,10 @@
 <br>
 
 <ng-container *ngIf="oauthToken">
-  <h2>OAuth2 Token</h2>
-  {{oauthToken.access_token}}
-
+  <h2>OAuth2 Access Token</h2>
+  <textarea rows="10" cols="100">
+    {{oauthToken.access_token}}
+  </textarea>
   <br>
   <hr>
   <br>
