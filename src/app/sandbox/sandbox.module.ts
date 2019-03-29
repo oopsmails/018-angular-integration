@@ -1,17 +1,24 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LiveDataComponent } from '@app/sandbox/components/change-detector/live-data/live-data.component';
+import { LiveData2Component } from '@app/sandbox/components/change-detector/live-data/live-data2.component';
+import {
+  MsgBetweenComponent,
+  MsgBetweenDemoComponent,
+  MsgBetweenService,
+  MsgChild1Component,
+  MsgChild2Component,
+  MsgChild3Component,
+} from '@app/sandbox/components/msg-between';
+import { SandboxHomeComponent } from '@app/sandbox/components/sandbox-home/sandbox-home.component';
 import { SharedModule } from '@app/shared/shared.module';
-import { LiveDataComponent } from './components/change-detector/live-data/live-data.component';
-import { LiveData2Component } from './components/change-detector/live-data/live-data2.component';
-import { MsgBetweenComponent } from './components/msg-between/msg-between.component';
-import { MsgBetweenService } from './components/msg-between/msg-between.service';
-import { SandboxHomeComponent } from './components/sandbox-home/sandbox-home.component';
-import { MsgChildComponent } from './components/msg-between/msg-child/msg-child.component';
+
 
 const routes: Routes = [
   { path: 'sandbox/home', component: SandboxHomeComponent },
-  { path: 'sandbox/livedata', component: LiveDataComponent }
+  { path: 'sandbox/livedata', component: LiveDataComponent },
+  { path: 'sandbox/msgbtw', component: MsgBetweenDemoComponent }
 ];
 
 @NgModule({
@@ -24,8 +31,11 @@ const routes: Routes = [
     SandboxHomeComponent,
     LiveDataComponent,
     LiveData2Component,
+    MsgBetweenDemoComponent,
     MsgBetweenComponent,
-    MsgChildComponent
+    MsgChild1Component,
+    MsgChild2Component,
+    MsgChild3Component
   ],
   providers: [
     MsgBetweenService
