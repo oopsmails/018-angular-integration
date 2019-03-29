@@ -5,13 +5,18 @@ import { SharedModule } from '@app/shared/shared.module';
 import { ExampleHomeComponent } from './components/example-home/example-home.component';
 import { CoursesComponent } from './components/generic/courses/courses.component';
 import { CoursesService } from './components/generic/courses/courses.service';
+import { EmployeeListComponent } from './components/generic/employee/employee-list/employee-list.component';
+import { EmployeeService } from './components/generic/employee/employee.service';
+import { OauthTokenComponent } from './components/generic/employee/oauth-token/oauth-token.component';
 import { JokeListParentComponent } from './components/view-child/joke-list-parent/joke-list-parent.component';
 import { JokeListComponent } from './components/view-child/joke-list/joke-list.component';
 import { JokeComponent } from './components/view-child/joke/joke.component';
 
 
 const routes: Routes = [
-  { path: 'example/home', component: ExampleHomeComponent }
+  { path: 'example/home', component: ExampleHomeComponent },
+  { path: 'example/oauthtoken', component: OauthTokenComponent },
+  { path: 'example/employees', component: EmployeeListComponent }
 ];
 
 @NgModule({
@@ -25,7 +30,9 @@ const routes: Routes = [
     ExampleHomeComponent,
     JokeComponent,
     JokeListComponent,
-    JokeListParentComponent
+    JokeListParentComponent,
+    EmployeeListComponent,
+    OauthTokenComponent
   ],
   exports: [
     ExampleHomeComponent,
@@ -35,7 +42,8 @@ const routes: Routes = [
     JokeListParentComponent
   ],
   providers: [
-    CoursesService
+    CoursesService,
+    EmployeeService
   ]
 })
 export class ExampleModule { }
