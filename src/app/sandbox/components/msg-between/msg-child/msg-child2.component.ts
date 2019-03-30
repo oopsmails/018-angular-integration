@@ -6,9 +6,12 @@ import { MsgBetweenService } from '../msg-between.service';
   selector: 'app-msg-child2',
   template: `
   <p>
-  msg-between working, child 2: shared through <b>Service</b>
+  msg-between working, child 2: <b>RECEIVING</b> through <b><i>Subject</i> in Service</b>
+  <br>
+  Message broadcasting through Service.
+  <br>
   Showing message as:
-    <br>
+  <br>
     {{ jsonMsg }}
   </p>
   `

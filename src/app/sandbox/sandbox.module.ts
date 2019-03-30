@@ -10,6 +10,8 @@ import {
   MsgChild1Component,
   MsgChild2Component,
   MsgChild3Component,
+  MsgChild4Component,
+  MsgChild5Component,
 } from '@app/sandbox/components/msg-between';
 import { SandboxHomeComponent } from '@app/sandbox/components/sandbox-home/sandbox-home.component';
 import { SharedModule } from '@app/shared/shared.module';
@@ -35,7 +37,9 @@ const routes: Routes = [
     MsgBetweenComponent,
     MsgChild1Component,
     MsgChild2Component,
-    MsgChild3Component
+    MsgChild3Component,
+    MsgChild4Component,
+    MsgChild5Component
   ],
   providers: [
     MsgBetweenService
