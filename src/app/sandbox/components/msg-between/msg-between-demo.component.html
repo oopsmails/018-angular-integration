@@ -5,7 +5,8 @@
 <br>
 <br>
 <h3>Messaging between components ... </h3>
-<h5>Click radio button below to see message passed between MsgBetweenComponent and MsgChildComponent.</h5>
+<hr>
+<br>
 <app-msg-between></app-msg-between>
 <hr>
 <br>
@@ -15,4 +16,10 @@
 <app-msg-child2></app-msg-child2>
 <hr>
 <br>
-<app-msg-child3></app-msg-child3>
+<app-msg-child4 (postData) = "onAddPost($event)"></app-msg-child4>
+<hr>
+<br>
+<app-msg-child5 [listPost] = "postDataArr"></app-msg-child5>
+<hr>
+<br>
+
