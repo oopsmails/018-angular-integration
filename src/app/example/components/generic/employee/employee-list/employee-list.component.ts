@@ -30,21 +30,34 @@ export class EmployeeListComponent implements OnInit {
   }
 
   getInitData(): void {
-    const userToken = this.employeeService.getUserToken(ClientType.SPRING_CLOUND_EMPLOYEE_SERVICE);
-    userToken.subscribe(
-      (oauthToken) => {
-        window.sessionStorage.setItem('token', JSON.stringify(oauthToken));
-        this.employeeService.getEmployeeList(this.resourceUrl).subscribe(
-          (employees) => {
-            this.employees = employees;
-            this.mockFisrt = this.employees[0];
-            this.loading = false;
-          },
-          error => {
-            console.log("Error: ", error);
-            this.router.navigate(['example/sc/login']);
-          }
-        );
+    // following is working version 0
+    // const userToken = this.employeeService.getUserToken(ClientType.SPRING_CLOUND_EMPLOYEE_SERVICE);
+    // userToken.subscribe(
+    //   (oauthToken) => {
+    //     window.sessionStorage.setItem('token', JSON.stringify(oauthToken));
+    //     this.employeeService.getEmployeeList(this.resourceUrl).subscribe(
+    //       (employees) => {
+    //         this.employees = employees;
+    //         this.mockFisrt = this.employees[0];
+    //         this.loading = false;
+    //       },
+    //       error => {
+    //         console.log("Error: ", error);
+    //         this.router.navigate(['example/sc/login']);
+    //       }
+    //     );
+    //   }
+    // );
+
+    this.employeeService.getEmployeeList(this.resourceUrl).subscribe(
+      (employees) => {
+        this.employees = employees;
+        this.mockFisrt = this.employees[0];
+        this.loading = false;
+      },
+      error => {
+        console.log("Error: ", error);
+        this.router.navigate(['example/sc/login']);
       }
     );
   }
