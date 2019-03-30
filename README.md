@@ -51,6 +51,7 @@ ng g c example\components\view-child\joke-list-parent
 ng g c example\components\generic\employee\employee-list
 ng g s example\components\generic\employee\employee
 ng g c example\components\generic\employee\oauth-token
+ng g c example\components\generic\login\spring-cloud-login
 ng g c example\components\blogger
 ng g c example\components\rxjs-home
 
