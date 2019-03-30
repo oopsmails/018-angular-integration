@@ -13,21 +13,22 @@ export class EmployeeService {
 
   constructor(
     private router: Router,
-    private usertokenService: UserTokenService,
+    // private usertokenService: UserTokenService,
     private httpClient: HttpClient) { }
 
+  // following is working version 0
   // tslint:disable-next-line:max-line-length
-  getUserToken(clientType: ClientType): Observable<OauthToken> { // can also return OauthToken | Observable<OauthToken> and use typeof in invoker
-    if (!window.sessionStorage.getItem('token') || !JSON.parse(window.sessionStorage.getItem('token')).access_token) {
-      return this.usertokenService.getUserToken(ClientType.SPRING_CLOUND_EMPLOYEE_SERVICE);
-    }
-    const existingToken = JSON.parse(window.sessionStorage.getItem('token'));
-    const existingTokenObservable = new Observable<OauthToken>((sub: Subscriber<OauthToken>) => {
-      sub.next(existingToken);
-      // sub.error({err: 'the token in session storage cannot parsed to OauthToken'}) //TODO: investigate more;
-    });
-    return existingTokenObservable;
-  }
+  // getUserToken(clientType: ClientType): Observable<OauthToken> { // can also return OauthToken | Observable<OauthToken> and use typeof in invoker
+  //   if (!window.sessionStorage.getItem('token') || !JSON.parse(window.sessionStorage.getItem('token')).access_token) {
+  //     return this.usertokenService.getUserToken(ClientType.SPRING_CLOUND_EMPLOYEE_SERVICE);
+  //   }
+  //   const existingToken = JSON.parse(window.sessionStorage.getItem('token'));
+  //   const existingTokenObservable = new Observable<OauthToken>((sub: Subscriber<OauthToken>) => {
+  //     sub.next(existingToken);
+  //     // sub.error({err: 'the token in session storage cannot parsed to OauthToken'}) //TODO: investigate more;
+  //   });
+  //   return existingTokenObservable;
+  // }
 
   getEmployeeList(resourceUrl): Observable<Employee[]> {
     const headers = new HttpHeaders({

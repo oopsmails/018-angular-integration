@@ -1,3 +1,4 @@
+import { SpringCloudLoginFormData } from './../../model/spring-cloud-login-form-data';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { OauthToken } from '@app/shared/model/oauthToken';
@@ -27,9 +28,18 @@ export class UserTokenService {
     return this.getUserToken(ClientType.SPRING_CLOUND_EMPLOYEE_SERVICE);
   }
 
+  getUserTokenByFormData(springCloudLoginFormData: SpringCloudLoginFormData, clientType: ClientType): Observable<OauthToken> {
+    const headers = this.getAuthHeaders(clientType);
+    const params = this.getAuthParams(springCloudLoginFormData, clientType);
+
+    return this.httpClient.post<OauthToken>(this.getAuthUrl(clientType),
+      params.toString(),
+      { headers });
+  }
+
   getUserToken(clientType: ClientType): Observable<OauthToken> {
     const headers = this.getAuthHeaders(clientType);
-    const params = this.getAuthParams(clientType);
+    const params = this.getAuthParamsDefault(clientType);
 
     return this.httpClient.post<OauthToken>(this.getAuthUrl(clientType),
       params.toString(),
@@ -64,7 +74,19 @@ export class UserTokenService {
     }
   }
 
-  private getAuthParams(clientType: ClientType): URLSearchParams {
+  private getAuthParams(springCloudLoginFormData: SpringCloudLoginFormData, clientType: ClientType): URLSearchParams {
+    const params = new URLSearchParams();
+
+    if (ClientType.SPRING_CLOUND_EMPLOYEE_SERVICE === clientType) {
+      params.append('username', springCloudLoginFormData.username);
+      params.append('password', springCloudLoginFormData.password);
+      params.append('grant_type', 'password');
+      params.append('client_id', 'demops');
+      return params;
+    }
+  }
+
+  private getAuthParamsDefault(clientType: ClientType): URLSearchParams {
     const params = new URLSearchParams();
 
     if (ClientType.SPRING_CLOUND_EMPLOYEE_SERVICE === clientType) {
