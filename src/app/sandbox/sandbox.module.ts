@@ -15,6 +15,7 @@ import {
 } from '@app/sandbox/components/msg-between';
 import { SandboxHomeComponent } from '@app/sandbox/components/sandbox-home/sandbox-home.component';
 import { SharedModule } from '@app/shared/shared.module';
+import { FileDownloadComponent } from './components/file-download/file-download.component';
 
 
 const routes: Routes = [
@@ -39,7 +40,8 @@ const routes: Routes = [
     MsgChild2Component,
     MsgChild3Component,
     MsgChild4Component,
-    MsgChild5Component
+    MsgChild5Component,
+    FileDownloadComponent
   ],
   providers: [
     MsgBetweenService

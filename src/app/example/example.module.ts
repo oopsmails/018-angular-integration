@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CoreModule } from '@app/core/core.module';
+import { CardComponent } from '@app/example/components/card-hosting/card.component';
 import { SpringCloudLoginComponent } from '@app/example/components/generic/login/spring-cloud/spring-cloud-login.component';
 import { SpringCloudLoginService } from '@app/example/components/generic/login/spring-cloud/spring-cloud-login.service';
 import { SharedModule } from '@app/shared/shared.module';
@@ -12,6 +14,7 @@ import {
   Posts2Component,
   Posts3Component,
 } from './components/blogger';
+import { CardHostingComponent } from './components/card-hosting/card-hosting.component';
 import { ExampleHomeComponent } from './components/example-home/example-home.component';
 import { CoursesComponent } from './components/generic/courses/courses.component';
 import { CoursesService } from './components/generic/courses/courses.service';
@@ -37,6 +40,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
     SharedModule,
+    CoreModule,
     RouterModule.forChild(routes)
   ],
   declarations: [
@@ -49,7 +53,9 @@ const routes: Routes = [
     PageThreeWaysComponent, BloggerComponent, Posts1Component, Posts2Component, Posts3Component,
     OauthTokenComponent,
     RxjsHomeComponent,
-    SpringCloudLoginComponent
+    SpringCloudLoginComponent,
+    CardHostingComponent,
+    CardComponent
   ],
   exports: [
     ExampleHomeComponent,
