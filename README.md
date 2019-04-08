@@ -71,8 +71,9 @@ ng g c sandbox\components\file-download
 ng g s sandbox\services\file-download
 
 ng g c sandbox\components\msg-between\msg-child
-
 ng g c sandbox\components\file-download-iframe
+
+ng g c sandbox\components\svg-circle
 
 ```
 
