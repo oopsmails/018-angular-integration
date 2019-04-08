@@ -8,5 +8,10 @@
         "target": "http://localhost:9999",
         "secure": false,
         "logLevel": "debug"
+    },
+    "/backendmock/*": {
+        "target": "http://dellsmall:19080",
+        "secure": false,
+        "logLevel": "debug"
     }
 }

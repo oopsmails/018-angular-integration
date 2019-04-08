@@ -1,0 +1,19 @@
+<h3>File downloading with old iFrame style ...</h3>
+<div *ngFor="let format of downloadFileFormats" class="radio">
+  <label>
+    <input ngModel type="radio" name="downloadformat" [value]="format" (change)="downFileFormatSelected(format)">
+    {{ format }}
+  </label>
+</div> 
+
+<div class="oopsmails-angular-hide">
+  <form id="{{fileDownloadFormId}}"
+        [action]="fileDownloadServiceUrl"
+        method="POST"
+        target="fileDownloadFrame"
+        accept-charset="UTF-8">
+    <textarea type="text" name="fileDownloadRequest" value="{{fileDownloadRequest}}"></textarea><br>
+    <textarea type="text" name="xConsumerName" value="{{xConsumerName}}"></textarea><br>
+  </form>
+  <iframe name="fileDownloadFrame" src="about:blank"></iframe>
+</div>

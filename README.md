@@ -2,6 +2,8 @@ Copied from oopsmails/angular-05/integration/README.md
 
 
 ====================================================
+npm install file-saver --save
+
 **Install Angular and create new project**
 ```
 ng new integration
@@ -69,6 +71,9 @@ ng g c sandbox\components\file-download
 ng g s sandbox\services\file-download
 
 ng g c sandbox\components\msg-between\msg-child
+
+ng g c sandbox\components\file-download-iframe
+
 ```
 
 ====> to use "`import { Course, UserTokens } from '@shared/model';`"
