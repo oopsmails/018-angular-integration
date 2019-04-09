@@ -1,15 +1,16 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ErrorDisplayComponent } from './common/error-display/error-display.component';
-import { LoginService } from './services/login.service';
-import { ErrorDisplayService } from './common/error-display/error-display.service';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+import { ErrorDisplayComponent } from './common/error-display/error-display.component';
+import { ErrorDisplayService } from './common/error-display/error-display.service';
 import { HttpConfigInterceptor } from './interceptors/httpconfig.interceptor';
 import { HttpErrorInterceptor } from './interceptors/httperror.interceptor';
+import { LoginService } from './services/login.service';
 import { UserTokenService } from './services/user-token/user-token.service';
-import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { WINDOW_PROVIDERS } from './services/window-provider.service';
 
 @NgModule({

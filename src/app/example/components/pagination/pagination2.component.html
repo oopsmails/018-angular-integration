@@ -1,0 +1,92 @@
+
+
+<div 
+class="progress-pagination" 
+[class.progress-pagination--advdash]="paginationConfig.backgroundType == 'light'"
+aria-labelledby="progress-aria-pagination-header"
+>
+<h2 
+  id="progress-aria-pagination-header" 
+  class="vh" 
+  >
+  Test pagination2
+</h2>
+
+
+
+<ul 
+  class="progress-pagination__number" 
+  aria-labelledby="progress-aria-pagination-header"
+  >
+
+  <!--PREV PAGE-->
+  <li class="progress-pagination__prev"
+    *ngIf="!paginationConfig.hiddenArrows">
+    <a href="javascript:void(0)"
+      role="button"
+      attr.aria-disabled="{{ paginationConfig.currentPage === 0 }}"
+      (click)="pageClick2(paginationConfig.currentPage - 1)"
+      [class.progress-inactive]="paginationConfig.currentPage === 0">
+
+        <!-- <progress-icon *ngIf="currentPage === 0"
+                    size="9x13" 
+                    iconId="progress-icon--arrow-right--pagination--disabled">
+        </progress-icon>
+        <progress-icon *ngIf="currentPage && currentPage !== 0"
+                    size="9x13" 
+                    iconId="refresh">
+        </progress-iicon *ngIf="currentPage === 0"
+                    size="9x13" 
+                    iconId="progress-icon--arrow-right--pagination--disabled">
+        </progress-icon>
+        <progress-icon *ngIf="currentPage && currentPage !== 0"
+                    size="9x13" 
+                    iconId="refresh">
+        </progress-icon> -->
+        <span *ngIf="paginationConfig.currentPage !== 0">prev</span>
+    </a>
+  </li>
+
+  <!-- PAGES -->
+  <li 
+    class="progress-pagination__number__item" 
+    *ngFor="let index of range(0, numOfPages)" 
+    [class.progress-pagination--advdash]="backgroundType == 'light'"
+    [ngClass]="setListItemClass(index)"
+    >
+    <a href="javascript:void(0)" 
+      role="button" 
+      attr.aria-pressed="{{ paginationConfig.currentPage === index }}" 
+      (click)="pageClick2(index)"
+      >
+      {{ index + 1 }}
+    </a>
+  </li>
+
+  <!--NEXT PAGE-->
+  <li class="progress-pagination__next"
+      *ngIf="!paginationConfig.hiddenArrows">
+    <a href="javascript:void(0)"
+      role="button"
+      attr.aria-disabled="{{ paginationConfig.currentPage >= getLastPageNumber() }}"
+      (click)="pageClick2(paginationConfig.currentPage + 1)"
+      [class.progress-inactive]="paginationConfig.currentPage >= getLastPageNumber()">
+
+        <!-- <progress-icon *ngIf="currentPage >= getLastPageNumber()"
+                size="9x13" 
+                iconId="progress-icon--arrow-right--pagination--disabled">
+        </progress-icon>
+        <progress-icon *ngIf="currentPage < getLastPageNumber()"
+                size="9x13" 
+                iconId="refresh">
+        </progress-icon> -->
+
+        <!-- <span [innerText]="nextLabel | translate" class="vh"></span> -->
+        <!-- <span class="vh">next</span> -->
+        <span *ngIf="paginationConfig.currentPage < getLastPageNumber()">next</span>
+    </a>
+</li>
+
+</ul>
+</div>
+

@@ -15,17 +15,20 @@ import {
   Posts3Component,
 } from './components/blogger';
 import { CardHostingComponent } from './components/card-hosting/card-hosting.component';
+import { ConsumingHttpComponent } from './components/consuming-http/consuming-http.component';
+import { PostsService } from './components/consuming-http/posts.service';
 import { ExampleHomeComponent } from './components/example-home/example-home.component';
 import { CoursesComponent } from './components/generic/courses/courses.component';
 import { CoursesService } from './components/generic/courses/courses.service';
 import { EmployeeListComponent } from './components/generic/employee/employee-list/employee-list.component';
 import { EmployeeService } from './components/generic/employee/employee.service';
 import { OauthTokenComponent } from './components/generic/employee/oauth-token/oauth-token.component';
+import { PaginationComponent } from './components/pagination/pagination.component';
+import { Pagination2Component } from './components/pagination/pagination2.component';
 import { RxjsHomeComponent } from './components/rxjs-home/rxjs-home.component';
 import { JokeListParentComponent } from './components/view-child/joke-list-parent/joke-list-parent.component';
 import { JokeListComponent } from './components/view-child/joke-list/joke-list.component';
 import { JokeComponent } from './components/view-child/joke/joke.component';
-
 
 
 const routes: Routes = [
@@ -33,6 +36,7 @@ const routes: Routes = [
   { path: 'example/sc/login', component: SpringCloudLoginComponent },
   { path: 'example/oauthtoken', component: OauthTokenComponent },
   { path: 'example/employees', component: EmployeeListComponent },
+  { path: 'example/pagination', component: ConsumingHttpComponent },
   { path: 'example/3ways', component: PageThreeWaysComponent }
 ];
 
@@ -55,7 +59,10 @@ const routes: Routes = [
     RxjsHomeComponent,
     SpringCloudLoginComponent,
     CardHostingComponent,
-    CardComponent
+    CardComponent,
+    PaginationComponent,
+    Pagination2Component,
+    ConsumingHttpComponent,
   ],
   exports: [
     ExampleHomeComponent,
@@ -72,7 +79,8 @@ const routes: Routes = [
   providers: [
     CoursesService,
     EmployeeService,
-    SpringCloudLoginService
+    SpringCloudLoginService,
+    PostsService
   ]
 })
 export class ExampleModule { }
