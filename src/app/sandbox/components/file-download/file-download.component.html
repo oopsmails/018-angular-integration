@@ -1,0 +1,17 @@
+<h3>File downloading with direct httpClient call ...</h3>
+
+<div *ngFor="let format of fileFormats" class="radio">
+  <label>
+    <input ngModel type="radio" name="format" [value]="format" (change)="fileFormatSelected(format)">
+    {{ format }}
+  </label>
+</div>
+<br>
+<br>
+<!-- <div *ngFor="let format of downloadFileFormats" class="radio">
+  <label>
+    <input ngModel type="radio" name="downloadformat" [value]="format" (change)="downFileFormatSelected(format)"> 
+    {{ format }}
+  </label>
+</div> -->
+

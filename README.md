@@ -2,6 +2,8 @@ Copied from oopsmails/angular-05/integration/README.md
 
 
 ====================================================
+npm install file-saver --save
+
 **Install Angular and create new project**
 ```
 ng new integration
@@ -32,6 +34,9 @@ ng g c core\components\home
 ng g c core\components\navbar-bs
 ng g c core\components\not-found
 
+ng g d core\directives\element-changing
+ng g d core\directives\mouseover-color
+
 
 npm i --save @angular/cdk @angular/material @angular/animations hammerjs
 
@@ -54,6 +59,7 @@ ng g c example\components\generic\employee\oauth-token
 ng g c example\components\generic\login\spring-cloud-login
 ng g c example\components\blogger
 ng g c example\components\rxjs-home
+ng g c example\components\card-hosting
 
 ng g m sandbox
 ng g c sandbox\components\sandbox-home
@@ -61,9 +67,14 @@ ng g c sandbox\components\change-detector\live-data
 ng g s sandbox\services\data-provider
 
 ng g c sandbox\components\msg-between
+ng g c sandbox\components\file-download
 ng g s sandbox\services\file-download
 
 ng g c sandbox\components\msg-between\msg-child
+ng g c sandbox\components\file-download-iframe
+
+ng g c sandbox\components\svg-circle
+
 ```
 
 ====> to use "`import { Course, UserTokens } from '@shared/model';`"
