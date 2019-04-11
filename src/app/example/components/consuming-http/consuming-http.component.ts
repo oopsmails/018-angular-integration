@@ -3,9 +3,9 @@ import { AppError } from '@app/shared/common/app-error';
 import { BadInput } from '@app/shared/common/bad-input';
 import { NotFoundError } from '@app/shared/common/not-found-error';
 import { TypiCodePost } from '@app/shared/model';
-import { Subject } from 'rxjs';
 
-import { PaginationConfig } from '../pagination/pagination-config';
+import { PaginationInputParam } from './../pagination/pagination.input.param';
+import { PaginationOuputParam } from './../pagination/pagination.output.param';
 import { PostsService } from './posts.service';
 
 @Component({
@@ -14,93 +14,46 @@ import { PostsService } from './posts.service';
 })
 export class ConsumingHttpComponent implements OnInit {
   private allPosts = new Array<TypiCodePost>();
-  private allPostSubject = new Subject<TypiCodePost[]>();
-
-  paginationConfig: PaginationConfig = new PaginationConfig();
-
-  // pager object
-  pager: any = {};
-
-  // paged items
   private posts = new Array<TypiCodePost>();
+  loading = true;
 
-  loading = false;
-  itemCount = 0;
-  pageNumber = 0;
-  itemsPerPage = 5;
-
-  // numberOfPageCombine = 1;
-  // backgroundType = 'light';
-  // hiddenArrows = false;
-  // disableNavigation = false;
+  paginationInputParam: PaginationInputParam = new PaginationInputParam();
+  paginationOuputParam = { pageClicked: 0, pageRange: new Array<number>() } as PaginationOuputParam;
 
   constructor(private postsService: PostsService) {
+    this.paginationInputParam.numberOfPageCombine = 3;
   }
 
   ngOnInit() {
-    // this.getPosts({ page: this.pageNumber, itemsPerPage: this.itemsPerPage });
-    this.getPosts({ page: 0, size: this.itemsPerPage });
-  }
-
-  getPosts(pageInfo): void {
-    this.loading = true;
     this.postsService.getAllPosts().subscribe(postsRet => {
-      this.paginationConfig.itemCount = postsRet.length;
-      this.paginationConfig.numberOfPageCombine = 3;
-
       this.allPosts = postsRet;
-      this.getData({ pageClicked: 0, pageRange: [] });
+      this.paginationInputParam.itemCount = this.allPosts.length;
+      this.getData(this.paginationOuputParam);
       this.loading = false;
     });
   }
 
-  private getData(pageNumberClickedRet: { pageClicked: number, pageRange?: Array<number> }): void {
-    this.itemCount = this.allPosts.length;
-    const startIndex = pageNumberClickedRet.pageClicked * this.itemsPerPage;
-    const endIndex = (startIndex + this.itemsPerPage) < this.allPosts.length ?
-      (startIndex + this.itemsPerPage) : this.allPosts.length;
-    console.log('startIndex=', startIndex);
-    console.log('endIndex=', endIndex);
-    this.posts = this.allPosts.slice(startIndex, endIndex);
-  }
-
-  // getPostsSubject(pageInfo): void {
-  //   this.loading = true;
-  //   this.service.getAll().subscribe(postsRet => {
-  //     this.allPostSubject.next(postsRet);
-  //   });
-  // }
-
-  // getPostsSwitchMap(pageInfo): void {
-  //   this.loading = true;
-  //   this.service.getAll().subscribe(postsRet => {
-  //     this.allPosts = postsRet;
-  //     this.itemCount = this.allPosts.length;
-  //     this.loading = false;
-  //   });
-  // }
-
-  // getPostsPromise(pageInfo): void {
-  //   this.service.getAllPromise().then(postsRet => {
-  //     this.allPosts = postsRet;
-  //     this.itemCount = this.allPosts.length;
-  //     this.posts = this.allPosts.splice(1, pageInfo.itemsPerPage);
-  //     this.loading = false;
-  //   });
-
-  // }
-
   createPost(input: HTMLInputElement) {
-    const post = { title: input.value } as TypiCodePost;
+    console.log('input.value=', input.value);
+    const newPost = { title: input.value } as TypiCodePost;
     input.value = '';
+    this.loading = true;
 
-    this.postsService.create(post)
+    this.postsService.create(newPost)
       .subscribe(
-        (newPost: TypiCodePost) => {
-          // post.id = newPost.id;
-          // this.posts.splice(0, 0, post);
+        (createdPost: TypiCodePost) => {
+          newPost.id = createdPost.id;
           this.allPosts.push(newPost);
-          this.allPosts.sort((a, b) => (a.id > b.id) ? 1 : -1);
+          // this.allPosts.sort(TypiCodePost.sortById);
+          // this.paginationInputParam.itemCount = this.allPosts.length;
+          // const startIndex = this.paginationInputParam.currentPage * this.paginationInputParam.itemsPerPage;
+          // const endIndex = (startIndex + this.paginationInputParam.itemsPerPage) < this.allPosts.length ?
+          //   (startIndex + this.paginationInputParam.itemsPerPage) : this.allPosts.length;
+          // this.posts = this.allPosts.slice(startIndex, endIndex);
+
+          this.getData(this.paginationOuputParam);
+
+          this.loading = false;
         },
         (error: AppError) => {
           if (error instanceof BadInput) {
@@ -120,6 +73,7 @@ export class ConsumingHttpComponent implements OnInit {
   }
 
   deletePost(post) {
+    this.loading = true;
     this.postsService.delete(post.id)
       .subscribe(
         () => {
@@ -127,7 +81,9 @@ export class ConsumingHttpComponent implements OnInit {
           this.posts.splice(index, 1);
           const indexAll = this.allPosts.indexOf(post);
           this.allPosts.splice(indexAll, 1);
-          this.itemCount = this.allPosts.length;
+          // this.paginationInputParam.itemCount = this.allPosts.length;
+          this.getData(this.paginationOuputParam);
+          this.loading = false;
         },
         (error: AppError) => {
           if (error instanceof NotFoundError) {
@@ -141,14 +97,20 @@ export class ConsumingHttpComponent implements OnInit {
         });
   }
 
-  onPageChange(pageNumberClickedRet: { pageClicked: number, pageRange?: Array<number> }): void {
-    // indexRet.forEach((item: number) => {
-    //   console.log('pageClick, index array: ', item);
-    // });
-    // this.pageNumber = indexRet[0];
-    // this.getPostsNoHttpCall({ page: this.pageNumber, size: this.itemsPerPage });
-
+  pageClick2(pageNumberClickedRet: PaginationOuputParam): void {
     this.getData(pageNumberClickedRet);
+  }
+
+  private getData(pageNumberClickedRet: PaginationOuputParam): void {
+    this.paginationOuputParam = pageNumberClickedRet;
+
+    this.paginationInputParam.itemCount = this.allPosts.length;
+    const startIndex = pageNumberClickedRet.pageClicked * this.paginationInputParam.itemsPerPage;
+    const endIndex = (startIndex + this.paginationInputParam.itemsPerPage) < this.allPosts.length ?
+      (startIndex + this.paginationInputParam.itemsPerPage) : this.allPosts.length;
+    console.log('startIndex=', startIndex);
+    console.log('endIndex=', endIndex);
+    this.posts = this.allPosts.slice(startIndex, endIndex);
   }
 
 }

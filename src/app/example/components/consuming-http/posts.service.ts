@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { TypiCodePost } from '@app/shared/model';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +17,16 @@ export class PostsService {
       'Accept': 'application/json'
     });
     return this.httpClient.get<Array<TypiCodePost>>(this.resourceUrl, { headers });
+
+    // const mockPosts = new Array<TypiCodePost>();
+
+    // for(let i = 0; i< 101; i++) {
+    //   const item = new TypiCodePost('' + i, 'Name abc ' + i);
+    //   mockPosts.push(item);
+    // }
+
+    // const mockPostsSubject: BehaviorSubject<Array<TypiCodePost>> = new BehaviorSubject(mockPosts);
+    // return mockPostsSubject.asObservable();
   }
 
   create(post: TypiCodePost): Observable<TypiCodePost> {

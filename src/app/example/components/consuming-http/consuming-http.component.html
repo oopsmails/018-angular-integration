@@ -24,8 +24,8 @@
 </ul>
 <div *ngIf="!loading">
   <app-pagination2
-      [paginationConfig]="paginationConfig"
-      (pageClick2)="onPageChange($event)"
+      [paginationInputParam]="paginationInputParam"
+      (pageClick2)="pageClick2($event)"
   >
   </app-pagination2>
 </div>
