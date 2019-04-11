@@ -1,0 +1,35 @@
+<div 
+class="progress-pagination" 
+[class.progress-pagination--advdash]="backgroundType == 'light'"
+aria-labelledby="progress-aria-pagination-header"
+>
+  <h2 
+    id="progress-aria-pagination-header" 
+    class="vh" 
+    >
+    Test pagination
+  </h2>
+
+  <ul 
+    class="progress-pagination__number" 
+    attr.aria-labelledby="progress-aria-pagination-header"
+    >
+
+    <li 
+      class="progress-pagination__number__item" 
+      *ngFor="let index of range(0, numOfPages)" 
+      [class.progress-pagination--advdash]="backgroundType == 'light'"
+      [ngClass]="setListItemClass(index)"
+      >
+      <a href="javascript:void(0)"
+        role="button" 
+        attr.aria-pressed="{{ currentPage === index }}" 
+        (click)="pageClick({ pageNumber: index })"
+        >
+        {{ index + 1 }}
+      </a>
+    </li>
+
+  </ul>
+</div>
+

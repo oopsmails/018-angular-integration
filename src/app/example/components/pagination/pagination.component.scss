@@ -1,0 +1,75 @@
+.progress-pagination {
+    font-size: 13px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.progress-pagination__prev {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    padding: 0 10px;
+    padding-right: 8px;
+}
+
+.progress-pagination__prev progress-icon {
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+.progress-pagination__next {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    padding: 0 10px;
+    padding-left: 8px;
+}
+
+.progress-pagination__number {
+    display: block;
+    padding: 10px;
+}
+
+.progress-pagination__number__item {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    padding: 0 10px;
+}
+
+.progress-pagination__number__item a {
+    color: #545454;
+    font-size: 14px;
+    outline: none;
+}
+
+.progress-pagination__number__item a:hover,
+.progress-pagination__number__item a:focus {
+    text-decoration: none;
+}
+
+.progress-pagination__number__item--selected {
+    border: 1px solid #02008a;
+    border-left: none;
+    border-right: none;
+}
+
+.progress-pagination__number__item--selected::before {
+    position: absolute;
+    top: -3px;
+    left: 0;
+    width: 100%;
+    height: 20px;
+}
+
+.progress-pagination__number__item--selected--first {
+    border-left: 1px solid #02008a;
+}
+
+.progress-pagination__number__item--selected--last {
+    border-right: 1px solid #02008a;
+}
+
+.progress-pagination__number__item--selected--single {
+    border: 1px solid #02008a;
+}

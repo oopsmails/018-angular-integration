@@ -1,15 +1,11 @@
+import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {
-    HttpInterceptor,
-    HttpRequest,
-    HttpErrorResponse,
-    HttpHandler,
-    HttpEvent,
-    HttpResponse
-} from '@angular/common/http';
-
-import { Observable, EMPTY, throwError, of } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+
+import { AppError } from './../common/app-error';
+import { BadInput } from './../common/bad-input';
+import { NotFoundError } from './../common/not-found-error';
 
 @Injectable()
 export class HttpErrorInterceptor implements HttpInterceptor {
@@ -30,11 +26,22 @@ export class HttpErrorInterceptor implements HttpInterceptor {
                 // return of(new HttpResponse({body: [{name: "Default value..."}]}));
 
                 // If you want to return the error on the upper level:
-                return throwError(error);
+                // return throwError(error);
+                return this.handleError(error);
 
                 // or just return nothing:
                 // return EMPTY;
             })
         );
+    }
+
+    private handleError(error: HttpErrorResponse): Observable<never> {
+        if (error.status === 400) {
+            return Observable.throw(new BadInput(JSON.stringify(error)));
+        }
+        if (error.status === 404) {
+            return Observable.throw(new NotFoundError());
+        }
+        return Observable.throw(new AppError(error));
     }
 }
