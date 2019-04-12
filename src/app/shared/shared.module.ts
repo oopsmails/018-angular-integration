@@ -7,6 +7,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { ErrorDisplayComponent } from './common/error-display/error-display.component';
 import { ErrorDisplayService } from './common/error-display/error-display.service';
+import { fakeBackendProvider } from './interceptors/fake.backend.interceptor';
 import { HttpConfigInterceptor } from './interceptors/httpconfig.interceptor';
 import { HttpErrorInterceptor } from './interceptors/httperror.interceptor';
 import { LoginService } from './services/login.service';
@@ -38,16 +39,13 @@ import { WINDOW_PROVIDERS } from './services/window-provider.service';
     WINDOW_PROVIDERS,
     UserTokenService,
     ErrorDisplayService,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: HttpConfigInterceptor,
-      multi: true,
-    },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: HttpErrorInterceptor,
-      multi: true,
-    }
+    { provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true  },
+
+    // { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+
+    // provider used to create fake backend
+    fakeBackendProvider
   ]
 })
 export class SharedModule { }

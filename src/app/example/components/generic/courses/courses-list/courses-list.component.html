@@ -1,0 +1,20 @@
+<ng-container>
+  <h2>Course List</h2>
+  <ul>
+    <li *ngFor="let course of itemsOnPage">
+      {{ course.courseId }} - {{ course.courseType }} : {{ course.courseName }}
+    </li>
+  </ul>
+
+  <div *ngIf="!loading">
+    <app-pagination2
+        [paginationInputParam]="paginationInputParam"
+        (pageClick2)="pageClick2($event)"
+    >
+    </app-pagination2>
+  </div>
+  <br>
+  <hr>
+  <br>
+
+</ng-container>

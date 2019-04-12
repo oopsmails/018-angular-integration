@@ -2,7 +2,6 @@ Copied from oopsmails/angular-05/integration/README.md
 
 
 ====================================================
-npm install file-saver --save
 
 **Install Angular and create new project**
 ```
@@ -24,11 +23,28 @@ Open the angular.json file and add ./node_modules/bootstrap/dist/css/bootstrap.m
     "./node_modules/bootstrap/dist/css/bootstrap.min.css" 
 ],
 ```
+
+**Dependencies**
+
+```
+npm install file-saver --save
+npm install @ngx-translate/core --save
+npm i @uirouter/angular --save
+npm i @uirouter/sticky-states --save
+
+npm i core-js --save
+npm i highcharts --save
+npm i lunr --save
+npm i web-animations-js --save
+```
+
 **Create project structure (as before)**
 ```
 ng g s services\configuration
 
 ng g m core
+
+-- ng g c core\lib\components\home
 
 ng g c core\components\home
 ng g c core\components\navbar-bs
@@ -50,6 +66,12 @@ ng g s shared\services\http-service
 ng g m example
 ng g c example\components\example-home
 ng g c example\components\generic\courses
+
+ng g c example\components\generic\courses\courses-selection
+ng g c example\components\generic\courses\courses-list
+
+ng g c example\components\generic\courses\courses-selection\online
+
 ng g c example\components\view-child\joke
 ng g c example\components\view-child\joke-list
 ng g c example\components\view-child\joke-list-parent
@@ -78,6 +100,14 @@ ng g s sandbox\services\file-download
 ng g s sandbox\services\posts
 
 ```
+
+====> Design: see shared.module.ts
+
+{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+{ provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+
+fakeBackendProvider
+
 
 ====> to use "`import { Course, UserTokens } from '@shared/model';`"
 instead of using "`../../../sharded/model`".
