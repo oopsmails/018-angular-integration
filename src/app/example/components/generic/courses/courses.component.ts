@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { LibFormStatus } from '@app/core/lib/components/form/lib-form.domain';
 import { Course, CourseType } from '@app/shared/model';
-import { StateService } from '@uirouter/core';
+// import { StateService } from '@uirouter/core';
 
 import { CoursesService } from './courses.service';
 

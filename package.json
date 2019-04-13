@@ -21,8 +21,6 @@
     "@angular/router": "~7.2.0",
     "@ng-bootstrap/ng-bootstrap": "^4.1.0",
     "@ngx-translate/core": "^11.0.1",
-    "@uirouter/angular": "^3.0.0",
-    "@uirouter/sticky-states": "^1.5.0",
     "bootstrap": "^4.3.1",
     "core-js": "^2.5.4",
     "file-saver": "^2.0.1",

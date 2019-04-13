@@ -33,7 +33,7 @@ import { CoursesSelectionComponent } from './components/generic/courses/courses-
 import { CoursesListComponent } from './components/generic/courses/courses-list/courses-list.component';
 import { OnlineComponent } from './components/generic/courses/courses-selection/online/online.component';
 import { TranslateModule } from '@ngx-translate/core';
-import { UIRouterModule } from '@uirouter/angular';
+// import { UIRouterModule } from '@uirouter/angular';
 
 
 const routes: Routes = [

@@ -24,13 +24,28 @@ Open the angular.json file and add ./node_modules/bootstrap/dist/css/bootstrap.m
 ],
 ```
 
+**Using ngrx store**
+
+```
+npm install @ngrx/schematics --save-dev
+npm install @ngrx/store @ngrx/effects @ngrx/entity @ngrx/store-devtools --save
+```
+
+As stated in the official doc, use shematics for the default ng commands :
+```ng config cli.defaultCollection @ngrx/schematics```
+
+
 **Dependencies**
 
 ```
 npm install file-saver --save
 npm install @ngx-translate/core --save
-npm i @uirouter/angular --save
-npm i @uirouter/sticky-states --save
+
+-- npm i @uirouter/angular --save
+-- npm i @uirouter/sticky-states --save
+--> take these out, use ngrx store ....
+-- "@uirouter/angular": "^3.0.0",
+-- "@uirouter/sticky-states": "^1.5.0",
 
 npm i core-js --save
 npm i highcharts --save

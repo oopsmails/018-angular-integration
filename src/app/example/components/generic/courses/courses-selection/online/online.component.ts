@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CourseType, OnlineCourse } from '@app/shared/model';
-import { StateService } from '@uirouter/core';
+// import { StateService } from '@uirouter/core';
 
 import { CoursesComponent } from './../../courses.component';
 import { CoursesService } from './../../courses.service';
