@@ -29,6 +29,11 @@ import { RxjsHomeComponent } from './components/rxjs-home/rxjs-home.component';
 import { JokeListParentComponent } from './components/view-child/joke-list-parent/joke-list-parent.component';
 import { JokeListComponent } from './components/view-child/joke-list/joke-list.component';
 import { JokeComponent } from './components/view-child/joke/joke.component';
+import { CoursesSelectionComponent } from './components/generic/courses/courses-selection/courses-selection.component';
+import { CoursesListComponent } from './components/generic/courses/courses-list/courses-list.component';
+import { OnlineComponent } from './components/generic/courses/courses-selection/online/online.component';
+import { TranslateModule } from '@ngx-translate/core';
+// import { UIRouterModule } from '@uirouter/angular';
 
 
 const routes: Routes = [
@@ -37,6 +42,7 @@ const routes: Routes = [
   { path: 'example/oauthtoken', component: OauthTokenComponent },
   { path: 'example/employees', component: EmployeeListComponent },
   { path: 'example/pagination', component: ConsumingHttpComponent },
+  { path: 'example/coursese', component: CoursesComponent },
   { path: 'example/3ways', component: PageThreeWaysComponent }
 ];
 
@@ -45,6 +51,10 @@ const routes: Routes = [
     CommonModule,
     SharedModule,
     CoreModule,
+    TranslateModule.forRoot(),
+    // UIRouterModule.forChild(
+    //   states: 
+    // ),
     RouterModule.forChild(routes)
   ],
   declarations: [
@@ -63,6 +73,9 @@ const routes: Routes = [
     PaginationComponent,
     Pagination2Component,
     ConsumingHttpComponent,
+    CoursesSelectionComponent,
+    CoursesListComponent,
+    OnlineComponent,
   ],
   exports: [
     ExampleHomeComponent,

@@ -1,0 +1,16 @@
+{
+    "oopsmails": {
+        "angular": {
+            "integration": {
+                "coursesSelection": {
+                    "INITIATED": "initiated-fr",
+                    "OPENED": "opened-fr",
+                    "alias": {
+                        "ONLINE": "Online-fr",
+                        "FACE_TO_FACE": "FaceToFace-fr"
+                    }
+                }
+            }
+        }
+    }
+}
