@@ -17,4 +17,9 @@
   <hr>
   <br>
 
+  <ul>
+    <li *ngFor="let course of (beginnerCourses$ | async)">
+      {{ course.courseId }} - {{ course.courseType }} : {{ course.courseName }}
+    </li>
+  </ul>
 </ng-container>

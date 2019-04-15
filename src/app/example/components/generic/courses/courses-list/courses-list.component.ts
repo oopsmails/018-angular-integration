@@ -1,8 +1,13 @@
+import { selectAllCourses } from './../example-courses.selectors';
+import { AllCoursesRequested } from './../example-courses.actions';
 import { CoursesService } from './../courses.service';
 import { Component, OnInit } from '@angular/core';
 import { Course } from '@app/shared/model';
 import { PaginationInputParam } from '@app/example/components/pagination/pagination.input.param';
 import { PaginationOuputParam } from '@app/example/components/pagination/pagination.output.param';
+import { Observable } from 'rxjs';
+import { Store, select } from '@ngrx/store';
+import { AppState } from '@app/ngrxstore/reducers';
 
 @Component({
   selector: 'app-courses-list',
@@ -14,12 +19,20 @@ export class CoursesListComponent implements OnInit {
   private allItems = new Array<Course>();
   loading = true;
 
+  private storeAllItems = new Array<Course>();
+
   paginationInputParam: PaginationInputParam = new PaginationInputParam();
   paginationOuputParam = { pageClicked: 0, pageRange: new Array<number>() } as PaginationOuputParam;
   
-  constructor(private coursesService: CoursesService) { }
+  beginnerCourses$: Observable<Course[]>;
+
+  constructor(private coursesService: CoursesService, private store: Store<AppState>) { }
 
   ngOnInit(): void {
+    this.store.dispatch(new AllCoursesRequested());
+    this.beginnerCourses$ = this.store.pipe(select(selectAllCourses));
+
+
     this.coursesService.getCourses().subscribe(retVal => {
       this.allItems = retVal;
       this.paginationInputParam.itemCount = this.allItems.length;
