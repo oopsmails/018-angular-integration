@@ -337,6 +337,7 @@ seeing following in log ...
 ```
 
 =======================================================
+
 ====> Problem: rxjs has no exported member observable
 
 -- Using RxJS 6. Just replace
@@ -349,6 +350,32 @@ by
 
 -- npm install rxjs-compat --save, just for types.
 `"rxjs-compat": "^6.4.0",`
+
+====> Problem: Run the mock rest server, /server
+
+==> The script in package.json
+
+--> Windows:
+``` "dev": "./node_modules/.bin/ts-node ./server/server.ts > NUL | ng serve --proxy-config proxy.conf.json",```
+
+--> Unix:
+ ```"dev": "./node_modules/.bin/ts-node ./server/server.ts > /dev/null | ng serve --proxy-config proxy.conf.json",```
+
+==> Error: ts-node server.ts SyntaxError: Unexpected token import module 2015, 
+
+C:\Github\angular-integration\server\server.ts:1
+(function (exports, require, module, __filename, __dirname) { import * as express from 'express';
+                                                                     ^
+SyntaxError: Unexpected token *
+    at new Script (vm.js:80:7)
+
+--> Take out the following line from tslint.json
+
+```"module": "es2015",```
+
+
+====> Problem: 
+
 
 =======================================================
 

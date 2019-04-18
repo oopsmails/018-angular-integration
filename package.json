@@ -4,6 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --proxy-config proxy.conf.json",
+    "devserver": "./node_modules/.bin/ts-node ./server/server.ts",
+    "dev": "./node_modules/.bin/ts-node ./server/server.ts > NUL | ng serve --proxy-config proxy.conf.json",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
