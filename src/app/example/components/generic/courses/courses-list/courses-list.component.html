@@ -19,6 +19,12 @@
 
   <ul>
     <li *ngFor="let course of (beginnerCourses$ | async)">
+      <a [routerLink]="['/example/course-select', course.courseId]">{{ course.courseId }}</a>
+
+      <button 
+        (click)="goToCourse('/example/course-select', course)"
+        class="btn btn-primary btn-sm">Go To</button>
+
       {{ course.courseId }} - {{ course.courseType }} : {{ course.courseName }}
     </li>
   </ul>

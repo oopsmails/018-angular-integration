@@ -86,6 +86,27 @@ export const adapter : EntityAdapter<Course> =
 EffectsModule.forRoot([]),
 EffectsModule.forFeature([CourseEffects])
 
+--> Summary:
+
+@Effect(): 
+real http calls to get/post/put
+
+Reducer:
+reducer(state = initialState, action: ExampleCoursesActions): ExampleCoursesState   
+Updating Store based on Action Types
+If using ngrx/Entity, then define "adapter"
+
+Action: define Action Types
+
+Selector: 
+
+```
+export const selectAllCourses = createSelector(
+  selectCoursesState,
+  fromExampleCourses.selectAll
+);
+```
+
 
 **Dependencies**
 

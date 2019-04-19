@@ -46,7 +46,8 @@ const routes: Routes = [
   { path: 'example/oauthtoken', component: OauthTokenComponent },
   { path: 'example/employees', component: EmployeeListComponent },
   { path: 'example/pagination', component: ConsumingHttpComponent },
-  { path: 'example/coursese', component: CoursesComponent },
+  { path: 'example/courses', component: CoursesComponent },
+  { path: 'example/course-select/:courseId', component: CoursesSelectionComponent },
   { path: 'example/3ways', component: PageThreeWaysComponent }
 ];
 

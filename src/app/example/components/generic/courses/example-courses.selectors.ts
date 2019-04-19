@@ -15,7 +15,6 @@ export const selectCoursesState = createFeatureSelector<fromExampleCourses.Examp
 export const selectAllCourses = createSelector(
   selectCoursesState,
   fromExampleCourses.selectAll
-
 );
 
 // export const selectBeginnerCourses = createSelector(
