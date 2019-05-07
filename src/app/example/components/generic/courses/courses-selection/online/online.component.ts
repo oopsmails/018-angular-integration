@@ -22,6 +22,7 @@ export class OnlineComponent extends CoursesComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log('OnlineComponent, course: ', this.course);
     this.init(CourseType.ONLINE);
   }
 

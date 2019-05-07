@@ -1,50 +1,53 @@
+<!-- <hr>
 <hr>
-<hr>
-<hr>
+<hr> -->
 <!-- <h3>Sandbox Home</h3> -->
 
-<div class="starter-template">
-  <h1>Sandbox Home</h1>
+<div class="container">
+
+  <div class="starter-template">
+    <h1>Sandbox Home</h1>
+  </div>
+
+  <h3>Live Update:</h3>
+  <br>
+  <input type="checkbox" [(ngModel)]="live">
+  <br>
+  <live-data [live]="live"></live-data>
+  <br> live: {{ live }}
+
+  <br>
+  <hr>
+  <br>
+
+
+  <h3>Live Update2:</h3>
+  <br>
+  <input type="checkbox" [(ngModel)]="live2">
+  <br>
+  <live-data2 [live]="live2"></live-data2>
+  <br> live2: {{ live2 }}
+  <hr>
+  <app-msg-between-demo></app-msg-between-demo>
+  <hr>
+  <!-- also ok if put child component here, broadcasting!!!!!!. <app-msg-child></app-msg-child> -->
+
+  <br>
+  <hr>
+  <br>
+
+
+  <file-download></file-download>
+
+
+  <br>
+  <hr>
+  <br>
+
+  <app-file-download-iframe></app-file-download-iframe>
+
+  <br>
+  <hr>
+  <br>
+
 </div>
-
-<h3>Live Update:</h3>
-<br>
-<input type="checkbox" [(ngModel)]="live">
-<br>
-<live-data [live]="live"></live-data>
-<br> live: {{ live }}
-
-<br>
-<hr>
-<br>
-
-
-<h3>Live Update2:</h3>
-<br>
-<input type="checkbox" [(ngModel)]="live2">
-<br>
-<live-data2 [live]="live2"></live-data2>
-<br> live2: {{ live2 }}
-<hr>
-<app-msg-between-demo></app-msg-between-demo>
-<hr>
-<!-- also ok if put child component here, broadcasting!!!!!!. <app-msg-child></app-msg-child> -->
-
-<br>
-<hr>
-<br>
-
-
-<file-download></file-download>
-
-
-<br>
-<hr>
-<br>
-
-<app-file-download-iframe></app-file-download-iframe>
-
-<br>
-<hr>
-<br>
-

@@ -7,6 +7,7 @@ import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { ElementChangingDirective } from './directives/element-changing.directive';
 import { MouseoverColorDirective } from './directives/mouseover-color.directive';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { MouseoverColorDirective } from './directives/mouseover-color.directive'
     HomeComponent,
     NotFoundComponent,
     ElementChangingDirective,
-    MouseoverColorDirective
+    MouseoverColorDirective,
+    FooterComponent
   ],
   imports: [
     CommonModule,
@@ -24,6 +26,7 @@ import { MouseoverColorDirective } from './directives/mouseover-color.directive'
   exports: [
     NavbarBsComponent,
     HomeComponent,
+    FooterComponent,
     NotFoundComponent,
     ElementChangingDirective,
     MouseoverColorDirective

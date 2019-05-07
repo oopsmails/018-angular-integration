@@ -3,6 +3,9 @@ import { Course, CourseType } from '@app/shared/model';
 import { TranslateService } from '@ngx-translate/core';
 
 import { CoursesService } from './../courses.service';
+import { Observable } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-courses-selection',
@@ -12,6 +15,9 @@ import { CoursesService } from './../courses.service';
 export class CoursesSelectionComponent implements OnInit {
   @Input() course: Course;
 
+  state$: Observable<Course>;
+  stateCourse: Course;
+
   @ViewChild('online') onlineRef: TemplateRef<any>;
   @ViewChild('faceToFace') faceToFaceRef: TemplateRef<any>;
 
@@ -20,14 +26,36 @@ export class CoursesSelectionComponent implements OnInit {
   template: TemplateRef<any>;
   name: string;
   hasCourseCreatedBefore: boolean;
+  loading = true;
 
-  constructor(private translateService: TranslateService, private coursesService: CoursesService) { }
+  constructor(private translateService: TranslateService, 
+    private coursesService: CoursesService,
+    public activatedRoute: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
-    if (this.course !== undefined) {
-      this.courseSelected = this.course.courseType;
-      this.template = this.getTemplate();
-    }
+    this.state$ = this.activatedRoute.paramMap
+      .pipe(map(() => window.history.state))
+
+    this.state$.subscribe(
+      (course) => {
+        this.stateCourse = course;
+        console.log('CoursesSelectionComponent, stateCourse: ', this.stateCourse);
+
+        this.course = course;
+        if (this.course !== undefined) {
+          this.courseSelected = this.course.courseType;
+          this.template = this.getTemplate();
+        }
+        this.courseSelected = CourseType.ONLINE;
+        this.template = this.getTemplate();
+
+        this.loading = false;
+      }
+    );
+
+    
+
     // this.coursesService.hasCourseCreatedBefore().subsribe((result: boolean) => {
     //   this.hasCourseCreatedBefore = result;
     // });

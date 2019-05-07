@@ -1,10 +1,26 @@
+<br>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<div *ngIf="!loading">
 <p>
-  courses-selection works!
+  courses-selection works, dynamic template below.
 </p>
+{{ state$ | async | json }}
+{{ stateCourse.courseId }}
+
+
 
 <ng-container *ngTemplateOutlet="template">
 </ng-container>
 
 <ng-template #online>
+    {{ stateCourse.courseId }}
   <app-online [course]="course" [name]="name"></app-online>
 </ng-template>
+
+</div>

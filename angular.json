@@ -28,7 +28,7 @@
             ],
             "styles": [
               "src/styles.scss",
-              "./node_modules/bootstrap/dist/css/bootstrap.min.css" 
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": [],
             "es5BrowserSupport": true
@@ -138,5 +138,8 @@
       }
     }
   },
-  "defaultProject": "integration"
+  "defaultProject": "integration",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }

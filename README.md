@@ -29,10 +29,83 @@ Open the angular.json file and add ./node_modules/bootstrap/dist/css/bootstrap.m
 ```
 npm install @ngrx/schematics --save-dev
 npm install @ngrx/store @ngrx/effects @ngrx/entity @ngrx/store-devtools --save
+
 ```
 
-As stated in the official doc, use shematics for the default ng commands :
+--> npm install @ngrx/entity --save OR yarn add @ngrx/entity   
+@ngrx/entity provides an API to manipulate and query entity collections.
+- Reduces boilerplate for creating reducers that manage a collection of models.
+- Provides performant CRUD operations for managing entity collections.
+- Extensible type-safe adapters for selecting entity information.
+
+
+As stated in the official doc, use shematics for the default ng commands :   
 ```ng config cli.defaultCollection @ngrx/schematics```
+
+Generate the initial Store in a global AppState (yeah, remove the dry-run option) :   
+
+```
+ng generate @ngrx/schematics:store State --root --module app.module.ts -d
+ng generate @ngrx/schematics:store State --root --module app.module.ts
+
+
+ng g action ngrxstore/actions/ExampleCourses -d
+ng g action ngrxstore/actions/ExampleCourses
+
+ng g reducer ngrxstore/reducers/ExampleCourses --reducers index.ts --spec false -d
+ng g reducer ngrxstore/reducers/ExampleCourses --reducers index.ts --spec false
+```
+
+--> if updating an array, then:
+Try to use the spread operator because it creates a new array of users and does not mutate the previous array.
+
+users: [...state.users, action.payload]
+Or else use @ngrx/entity module for arrays. It's the best way.
+
+--> ngrx entity error typeerror cannot read property 'ids' of undefined
+
+Course object defines courseId as 'id' and it is a string instead of number ..., need to correctly define Adapter in reducer.
+
+```
+export const adapter : EntityAdapter<Course> = 
+      createEntityAdapter<Course>({
+        sortComparer: sortByCourseId,
+        selectId: course => course.courseId
+    });
+```
+
+--> ngfor async
+```
+<li *ngFor="let course of (beginnerCourses$ | async)">
+    {{ course.courseId }} - {{ course.courseType }} : {{ course.courseName }}
+</li>
+```
+
+--> ngrx NullInjectorError: No provider for Actions!
+
+EffectsModule.forRoot([]),
+EffectsModule.forFeature([CourseEffects])
+
+--> Summary:
+
+@Effect(): 
+real http calls to get/post/put
+
+Reducer:
+reducer(state = initialState, action: ExampleCoursesActions): ExampleCoursesState   
+Updating Store based on Action Types
+If using ngrx/Entity, then define "adapter"
+
+Action: define Action Types
+
+Selector: 
+
+```
+export const selectAllCourses = createSelector(
+  selectCoursesState,
+  fromExampleCourses.selectAll
+);
+```
 
 
 **Dependencies**
@@ -64,6 +137,7 @@ ng g m core
 ng g c core\components\home
 ng g c core\components\navbar-bs
 ng g c core\components\not-found
+ng g c core\components\footer
 
 ng g d core\directives\element-changing
 ng g d core\directives\mouseover-color
@@ -285,6 +359,7 @@ seeing following in log ...
 ```
 
 =======================================================
+
 ====> Problem: rxjs has no exported member observable
 
 -- Using RxJS 6. Just replace
@@ -297,6 +372,32 @@ by
 
 -- npm install rxjs-compat --save, just for types.
 `"rxjs-compat": "^6.4.0",`
+
+====> Problem: Run the mock rest server, /server
+
+==> The script in package.json
+
+--> Windows:
+``` "dev": "./node_modules/.bin/ts-node ./server/server.ts > NUL | ng serve --proxy-config proxy.conf.json",```
+
+--> Unix:
+ ```"dev": "./node_modules/.bin/ts-node ./server/server.ts > /dev/null | ng serve --proxy-config proxy.conf.json",```
+
+==> Error: ts-node server.ts SyntaxError: Unexpected token import module 2015, 
+
+C:\Github\angular-integration\server\server.ts:1
+(function (exports, require, module, __filename, __dirname) { import * as express from 'express';
+                                                                     ^
+SyntaxError: Unexpected token *
+    at new Script (vm.js:80:7)
+
+--> Take out the following line from tslint.json
+
+```"module": "es2015",```
+
+
+====> Problem: 
+
 
 =======================================================
 
@@ -312,6 +413,27 @@ path: 'example/employees', component: EmployeeListComponent
 
 
 =======================================================
+
+
+"dev": "npm run start-watch > /dev/null | npm run wp-server"
+
+"start": "./node_modules/.bin/ng serve  --proxy-config ./proxy.json",
+"server": "./node_modules/.bin/ts-node ./server/server.ts",
+
+
+"dev": "npm run server > /dev/null | npm run start",
+"dev": "npm run --silent server | npm run start",
+
+
+If you're using an UNIX-like environment, just use & as the separator:
+
+"dev": "npm run start-watch & npm run wp-server"
+
+
+Otherwise if you're interested on a cross-platform solution, you could use npm-run-all module:
+
+"dev": "npm-run-all --parallel start-watch wp-server"
+
 
 ctrl + alt + o: organize import
 
