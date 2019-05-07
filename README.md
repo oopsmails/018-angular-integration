@@ -137,6 +137,7 @@ ng g m core
 ng g c core\components\home
 ng g c core\components\navbar-bs
 ng g c core\components\not-found
+ng g c core\components\footer
 
 ng g d core\directives\element-changing
 ng g d core\directives\mouseover-color

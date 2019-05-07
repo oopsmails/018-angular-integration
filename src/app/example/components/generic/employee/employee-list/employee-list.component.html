@@ -1,34 +1,44 @@
+<!-- <br>
 <br>
 <br>
 <br>
 <br>
-<br>
-<br>
+<br> -->
 
-<ng-container *ngIf="!loading">
+<!-- <div class="container" style="margin-top: 70px;"> -->
+<div class="container">
 
-  <div class="col-md-6 employee-container">
-      <h2 style="margin: auto"> Employee Details</h2>
-      <button class="btn btn-danger" style="width:100px" (click)="addEmployee()"> Add Employee</button>
-      <table class="table table-striped">
-          <thead>
-              <tr>
-                  <th class="hidden">Id</th>
-                  <th>Id</th>
-                  <th>Name</th>
-              </tr>
-          </thead>
-          <tbody>
-              <tr *ngFor="let employee of employees">
-                  <td class="hidden">{{employee.id}}</td>
-                  <td>{{employee.id}}</td>
-                  <td>{{employee.name}}</td>
-                  <td><button class="btn btn-success" (click)="deleteEmployee(employee)"> Delete</button>
-                      <button class="btn btn-success" (click)="editEmployee(employee)" style="margin-left: 20px;">
-                          Edit</button></td>
-              </tr>
-          </tbody>
+  <h2>Employee Details</h2>
+  <p>
+    <button class="btn btn-danger" (click)="addEmployee()"> Add Employee</button>
+  </p>
+
+  <ng-container *ngIf="!loading">
+
+    <div class="col employee-container">
+      <table class="table table-hover">
+        <thead class="thead-light">
+          <tr>
+            <th class="d-none">Id1</th>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Operation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let employee of employees">
+            <td class="d-none">{{employee.id}}</td>
+            <td>{{employee.id}}</td>
+            <td>{{employee.name}}</td>
+            <td>
+              <button class="btn btn-success" (click)="deleteEmployee(employee)"> Delete</button>
+              <button class="btn btn-success" (click)="editEmployee(employee)" style="margin-left: 20px;">
+                Edit</button>
+            </td>
+          </tr>
+        </tbody>
       </table>
-  </div>
+    </div>
+
   </ng-container>
-  
+</div>
