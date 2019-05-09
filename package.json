@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve --proxy-config proxy.conf.json",
     "devserver": "./node_modules/.bin/ts-node ./server/server.ts",
+    "nodeserver": "tsc backend/server.ts && node backend/server.js",
     "dev": "./node_modules/.bin/ts-node ./server/server.ts > NUL | ng serve --proxy-config proxy.conf.json",
     "build": "ng build",
     "test": "ng test",

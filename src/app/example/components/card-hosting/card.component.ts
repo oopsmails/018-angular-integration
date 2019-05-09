@@ -20,7 +20,7 @@ export class CardComponent implements OnInit, OnDestroy {
   @Input() card: Card;
 
   private sub: Subscription;
-  private elementChanging: boolean;
+  elementChanging: boolean;
 
   ngOnInit(): void {
       this.sub = interval(2000)

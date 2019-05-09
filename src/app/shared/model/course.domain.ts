@@ -10,6 +10,9 @@ export interface Course {
 
 export class OnlineCourse implements Course {
     courseType = CourseType.ONLINE;
+    courseId?: string;
+    courseName?: string;
+    price?: number;
     url: string;
 }
 

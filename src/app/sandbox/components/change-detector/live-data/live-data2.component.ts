@@ -17,5 +17,5 @@ export class LiveData2Component {
     }
   }
 
-  constructor(private ref: ChangeDetectorRef, private dataProvider: DataProviderService) { }
+  constructor(private ref: ChangeDetectorRef, public dataProvider: DataProviderService) { }
 }

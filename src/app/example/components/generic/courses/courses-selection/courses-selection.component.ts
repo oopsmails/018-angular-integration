@@ -28,9 +28,9 @@ export class CoursesSelectionComponent implements OnInit {
   hasCourseCreatedBefore: boolean;
   loading = true;
 
-  constructor(private translateService: TranslateService, 
-    private coursesService: CoursesService,
-    public activatedRoute: ActivatedRoute
+  constructor(private translateService: TranslateService,
+              private coursesService: CoursesService,
+              public activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
@@ -41,20 +41,16 @@ export class CoursesSelectionComponent implements OnInit {
       (course) => {
         this.stateCourse = course;
         console.log('CoursesSelectionComponent, stateCourse: ', this.stateCourse);
-
-        this.course = course;
-        if (this.course !== undefined) {
-          this.courseSelected = this.course.courseType;
-          this.template = this.getTemplate();
-        }
-        this.courseSelected = CourseType.ONLINE;
-        this.template = this.getTemplate();
-
         this.loading = false;
       }
     );
 
-    
+    if (this.course !== undefined) {
+      this.courseSelected = this.course.courseType;
+      this.template = this.getTemplate();
+    }
+    this.courseSelected = CourseType.ONLINE;
+    this.template = this.getTemplate();
 
     // this.coursesService.hasCourseCreatedBefore().subsribe((result: boolean) => {
     //   this.hasCourseCreatedBefore = result;
@@ -68,7 +64,7 @@ export class CoursesSelectionComponent implements OnInit {
   }
 
   private getTemplate(): TemplateRef<any> {
-    let template: TemplateRef<any> = undefined;
+    let template: TemplateRef<any>;
 
     switch (this.courseSelected) {
       case CourseType.ONLINE:

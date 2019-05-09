@@ -3,13 +3,13 @@ Copied from oopsmails/angular-05/integration/README.md
 
 ====================================================
 
-**Install Angular and create new project**
+## Install Angular and create new project
 ```
 ng new integration
 cd integration
 ```
 
-**Install bootstrap**
+## Install bootstrap
 ```
 npm install bootstrap --save
 or
@@ -24,7 +24,7 @@ Open the angular.json file and add ./node_modules/bootstrap/dist/css/bootstrap.m
 ],
 ```
 
-**Using ngrx store**
+## Using ngrx store
 
 ```
 npm install @ngrx/schematics --save-dev
@@ -108,7 +108,7 @@ export const selectAllCourses = createSelector(
 ```
 
 
-**Dependencies**
+## Dependencies
 
 ```
 npm install file-saver --save
@@ -126,7 +126,7 @@ npm i lunr --save
 npm i web-animations-js --save
 ```
 
-**Create project structure (as before)**
+## Create project structure (as before)
 ```
 ng g s services\configuration
 
@@ -190,7 +190,7 @@ ng g s sandbox\services\posts
 
 ```
 
-====> Design: see shared.module.ts
+####  Design: see shared.module.ts
 
 { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
 { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
@@ -198,7 +198,7 @@ ng g s sandbox\services\posts
 fakeBackendProvider
 
 
-====> to use "`import { Course, UserTokens } from '@shared/model';`"
+####  to use "`import { Course, UserTokens } from '@shared/model';`"
 instead of using "`../../../sharded/model`".
 
 or `import { Course, UserTokens } from '@app/shared/model'`;
@@ -228,12 +228,12 @@ tsconfig.json:
 
 ----
 
-====> Resolving the error "http call in ngOnInit(), seeing undefined error in console"
+####  Resolving the error "http call in ngOnInit(), seeing undefined error in console"
 See, CoursesComponent and courses.component.html
 
 `<ng-container *ngIf="oauthToken">`
 
-====> nav-bar, dropdown not working ...
+####  nav-bar, dropdown not working ...
 `npm i --save @ng-bootstrap/ng-bootstrap`
 
 navbar-bs:
@@ -258,7 +258,7 @@ font-awesome.
 
 ----
 
-====> Any good way to call subscribe inside subscribe? like,
+####  Any good way to call subscribe inside subscribe? like,
 ```
 this.service.service1().subscribe( res1 => {
   this.service.service1().subscribe( res2 => {
@@ -295,7 +295,7 @@ this.service.service1().pipe(
 
 
 
-====> pipe and map, should be used as manipulating returning data ...
+####  pipe and map, should be used as manipulating returning data ...
 ```
 return this.httpClient.get<Employee[]>(resourceUrl, { headers }).pipe(map((x: any) => {
     return x.substring ....
@@ -305,7 +305,18 @@ return this.httpClient.get<Employee[]>(resourceUrl, { headers }).pipe(map((x: an
 
 =======================================================
 
-====> CrossOrigin: problem
+#### Run Angular on NodeJS web server:
+https://blog.cloudboost.io/run-your-angular-app-on-nodejs-c89f1e99ddd3
+
+`ng build --prod`
+
+`backend: tsc backend/server.ts && node backend/server.js`
+
+https://github.com/bovandersteene/rbo-collection/tree/002-add-node-server
+
+`yarn backend`
+
+####  CrossOrigin: problem
 Failed to load http://localhost:8080/backendmock/downloadFile/docx?filename=testDocx.docx: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'http://localhost:4200' is therefore not allowed access. The response had HTTP status code 403.
 
 ==> To make localhost:4200 connect to localhost:8080
@@ -360,7 +371,7 @@ seeing following in log ...
 
 =======================================================
 
-====> Problem: rxjs has no exported member observable
+####  Problem: rxjs has no exported member observable
 
 -- Using RxJS 6. Just replace
 ```
@@ -373,7 +384,7 @@ by
 -- npm install rxjs-compat --save, just for types.
 `"rxjs-compat": "^6.4.0",`
 
-====> Problem: Run the mock rest server, /server
+####  Problem: Run the mock rest server, /server
 
 ==> The script in package.json
 
@@ -396,19 +407,33 @@ SyntaxError: Unexpected token *
 ```"module": "es2015",```
 
 
-====> Problem: 
+####  Problem: ng build --prod
+
+Property 'courseId' does not exist on type 'OnlineCourse'.
+
+```
+export class OnlineCourse implements Course {
+    courseType = CourseType.ONLINE;
+    courseId?: string;
+    courseName?: string;
+    price?: number;
+    url: string;
+}
+```
+
+If *implements* then need to copy ALL properties from upper interface.
 
 
 =======================================================
 
 **In This Repository**
 
-====> 3 Ways to Pass Async Data to Angular + Child Components
+####  3 Ways to Pass Async Data to Angular + Child Components
 path: 'example/3ways', component: PageThreeWaysComponent
 
 From: https://scotch.io/tutorials/3-ways-to-pass-async-data-to-angular-2-child-components 
 
-====> OAuth2, grand_type: password, with backend Auth Server (Spring Clound)
+####  OAuth2, grand_type: password, with backend Auth Server (Spring Clound)
 path: 'example/employees', component: EmployeeListComponent
 
 
@@ -433,6 +458,12 @@ If you're using an UNIX-like environment, just use & as the separator:
 Otherwise if you're interested on a cross-platform solution, you could use npm-run-all module:
 
 "dev": "npm-run-all --parallel start-watch wp-server"
+
+=======================================================
+
+# Need to try next ...
+
+npm -g install madge
 
 
 ctrl + alt + o: organize import

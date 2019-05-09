@@ -56,10 +56,12 @@ export class EmployeeListComponent implements OnInit {
         this.loading = false;
       },
       error => {
-        console.log("Error: ", error);
+        console.log('Error: ', error);
         this.router.navigate(['example/sc/login']);
       }
     );
   }
+
+  addEmployee(): void {}
 
 }
