@@ -14,7 +14,7 @@ import { PostsService } from './posts.service';
 })
 export class ConsumingHttpComponent implements OnInit {
   private allPosts = new Array<TypiCodePost>();
-  private posts = new Array<TypiCodePost>();
+  posts = new Array<TypiCodePost>();
   loading = true;
 
   paginationInputParam: PaginationInputParam = new PaginationInputParam();

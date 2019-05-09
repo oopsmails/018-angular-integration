@@ -4,13 +4,13 @@ import { DataProviderService } from '@app/sandbox/services/data-provider.service
 @Component({
   selector: 'live-data',
   template: `
-  {{ dataProvider.data }}
+  {{ this.dataProvider.data }}
   `
 })
 export class LiveDataComponent implements OnInit, OnChanges {
   @Input() live: boolean;
 
-  constructor(private ref: ChangeDetectorRef, private dataProvider: DataProviderService) { }
+  constructor(private ref: ChangeDetectorRef, public dataProvider: DataProviderService) { }
 
   ngOnInit(): void {
     console.log('ngOnInit: ', this.live);

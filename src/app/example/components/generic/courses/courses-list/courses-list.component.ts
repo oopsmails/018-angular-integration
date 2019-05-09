@@ -17,7 +17,7 @@ import { selectAllCourses } from './../example-courses.selectors';
   styleUrls: ['./courses-list.component.scss']
 })
 export class CoursesListComponent implements OnInit {
-  private itemsOnPage = new Array<Course>();
+  itemsOnPage = new Array<Course>();
   private allItems = new Array<Course>();
   loading = true;
 
