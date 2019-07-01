@@ -37,6 +37,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { coursesReducer } from '@app/example/components/generic/courses/example-courses.reducer';
+import { TodosComponent } from './components/generic/todos/todos.component';
 // import { UIRouterModule } from '@uirouter/angular';
 
 
@@ -47,6 +48,7 @@ const routes: Routes = [
   { path: 'example/employees', component: EmployeeListComponent },
   { path: 'example/pagination', component: ConsumingHttpComponent },
   { path: 'example/courses', component: CoursesComponent },
+  { path: 'example/todos', component: TodosComponent },
   { path: 'example/course-select/:courseId', component: CoursesSelectionComponent },
   { path: 'example/3ways', component: PageThreeWaysComponent }
 ];
@@ -58,7 +60,7 @@ const routes: Routes = [
     CoreModule,
     TranslateModule.forRoot(),
     // UIRouterModule.forChild(
-    //   states: 
+    //   states:
     // ),
     RouterModule.forChild(routes),
     StoreModule.forFeature('courses', coursesReducer),
@@ -85,6 +87,7 @@ const routes: Routes = [
     CoursesSelectionComponent,
     CoursesListComponent,
     OnlineComponent,
+    TodosComponent,
   ],
   exports: [
     ExampleHomeComponent,
