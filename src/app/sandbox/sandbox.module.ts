@@ -19,6 +19,7 @@ import { SharedModule } from '@app/shared/shared.module';
 import { FileDownloadComponent } from './components/file-download/file-download.component';
 import { FileDownloadIframeComponent } from './components/file-download-iframe/file-download-iframe.component';
 import { SvgCircleComponent } from './components/svg-circle/svg-circle.component';
+import { TstestingComponent } from './components/tstesting/tstesting.component';
 
 
 const routes: Routes = [
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'sandbox/livedata', component: LiveDataComponent },
   { path: 'sandbox/svgcircleok', component: SvgCircleComponent },
   { path: 'sandbox/svgcircle', component: LoadingSvgComponent },
+  { path: 'example/tstest', component: TstestingComponent },
   { path: 'sandbox/msgbtw', component: MsgBetweenDemoComponent }
 ];
 
@@ -49,7 +51,8 @@ const routes: Routes = [
     FileDownloadComponent,
     FileDownloadIframeComponent,
     SvgCircleComponent,
-    LoadingSvgComponent
+    LoadingSvgComponent,
+    TstestingComponent
   ],
   providers: [
     MsgBetweenService

@@ -159,6 +159,8 @@ ng g c example\components\generic\courses
 ng g c example\components\generic\courses\courses-selection
 ng g c example\components\generic\courses\courses-list
 
+ng g c example\components\generic\todos
+
 ng g c example\components\generic\courses\courses-selection\online
 
 ng g c example\components\view-child\joke
@@ -184,6 +186,8 @@ ng g c sandbox\components\file-download
 ng g c sandbox\components\msg-between\msg-child
 ng g c sandbox\components\file-download-iframe
 ng g c sandbox\components\svg-circle
+
+ng g c sandbox\components\tstesting
 
 ng g s sandbox\services\file-download
 ng g s sandbox\services\posts
