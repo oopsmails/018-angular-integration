@@ -1,6 +1,17 @@
 export interface Post {
-    title: string;
-    category: string;
+    userId?: string;
+    id?: string;
+    title?: string;
+    category?: string;
+    body?: string;
+}
+
+export interface Comment {
+    postId?: string;
+    id?: string;
+    name?: string;
+    email?: string;
+    body?: string;
 }
 
 export interface GroupPosts {
