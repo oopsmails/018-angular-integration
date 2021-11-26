@@ -111,8 +111,16 @@ export const selectAllCourses = createSelector(
 ## Dependencies
 
 ```
-npm install file-saver --save
-npm install @ngx-translate/core --save
+Using this to resolve: npm install --save --legacy-peer-deps
+
+npm install bootstrap --save
+
+npm install file-saver --save\
+npm install @ngx-translate/core --save //?????? peer @angular/core@">=13.0.0" from @ngx-translate/core@14.0.0 
+npm install @ngx-translate/core --save --legacy-peer-deps // worked
+
+
+
 
 -- npm i @uirouter/angular --save
 -- npm i @uirouter/sticky-states --save
@@ -120,10 +128,24 @@ npm install @ngx-translate/core --save
 -- "@uirouter/angular": "^3.0.0",
 -- "@uirouter/sticky-states": "^1.5.0",
 
+
+npm install @ngrx/schematics --save-dev
+
+npm install @ngrx/store @ngrx/effects @ngrx/entity @ngrx/store-devtools --save //????? 
+npm install @ngrx/store @ngrx/effects @ngrx/entity @ngrx/store-devtools --save --legacy-peer-deps
+
+
 npm i core-js --save
 npm i highcharts --save
 npm i lunr --save
 npm i web-animations-js --save
+
+npm i --save @angular/cdk @angular/material @angular/animations hammerjs
+npm i --save @ng-bootstrap/ng-bootstrap
+
+
+
+
 ```
 
 ## Create project structure (as before)
@@ -142,8 +164,6 @@ ng g c core\components\footer
 ng g d core\directives\element-changing
 ng g d core\directives\mouseover-color
 
-
-npm i --save @angular/cdk @angular/material @angular/animations hammerjs
 
 ----
 
