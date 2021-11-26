@@ -423,6 +423,10 @@ export class OnlineCourse implements Course {
 
 If *implements* then need to copy ALL properties from upper interface.
 
+####  Problem: Error: Can't find Python executable "python"
+
+See github\general-info\Angular\angular-updating.md ... basically, upgrade nodejs
+
 
 =======================================================
 
