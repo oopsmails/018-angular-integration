@@ -37,11 +37,11 @@ export class HttpErrorInterceptor implements HttpInterceptor {
 
     private handleError(error: HttpErrorResponse): Observable<never> {
         if (error.status === 400) {
-            return Observable.throw(new BadInput(JSON.stringify(error)));
+            return throwError(() => new BadInput(JSON.stringify(error)));
         }
         if (error.status === 404) {
-            return Observable.throw(new NotFoundError());
+            return  throwError(() => new NotFoundError());
         }
-        return Observable.throw(new AppError(error));
+        return  throwError(() => new AppError(error));
     }
 }

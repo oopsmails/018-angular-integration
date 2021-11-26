@@ -1,6 +1,7 @@
 import { ApplicationRef, Component, Inject, OnDestroy } from '@angular/core';
-import { DOCUMENT, DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { Subscription } from 'rxjs';
+import {DOCUMENT} from '@angular/common';
 
 import { FileDownloadService, FileFormats } from './../../services/file-download.service';
 import { MsgBetweenService } from './../msg-between/msg-between.service';

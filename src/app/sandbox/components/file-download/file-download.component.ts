@@ -28,7 +28,7 @@ export class FileDownloadComponent {
     private sanitizer: DomSanitizer,
     private fileDownloadService: FileDownloadService,
     private httpClient: HttpClient,
-    @Inject(WINDOW) private window: Window) {
+    @Inject(WINDOW) private window: any) {
       this.exportFrameSrc = sanitizer.bypassSecurityTrustResourceUrl(this.fileDownloadService.getDownloadFileUrl('XLSX'));
     
       this.fileFormats = Object.keys(FileFormats);
