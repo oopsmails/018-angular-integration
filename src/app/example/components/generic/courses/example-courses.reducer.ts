@@ -60,7 +60,8 @@ export function coursesReducer(state = initialCoursesState , action: ExampleCour
 
     case ExampleCoursesActionTypes.AllCoursesLoaded:
 
-      return adapter.addAll(action.payload.courses, {...state, allCoursesLoaded:true});
+      // return adapter.addAll(action.payload.courses, {...state, allCoursesLoaded:true});
+      return adapter.setAll(action.payload.courses, {...state, allCoursesLoaded:true});
 
     case ExampleCoursesActionTypes.CourseSaved:
 

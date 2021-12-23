@@ -24,7 +24,7 @@ import { WINDOW_PROVIDERS } from './services/window-provider.service';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgbModule.forRoot()
+    NgbModule
   ],
   exports: [
     CommonModule,
@@ -32,7 +32,7 @@ import { WINDOW_PROVIDERS } from './services/window-provider.service';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgbModule.forRoot().ngModule
+    NgbModule
   ],
   providers: [
     LoginService,
