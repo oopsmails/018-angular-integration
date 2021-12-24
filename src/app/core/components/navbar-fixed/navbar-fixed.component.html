@@ -1,6 +1,7 @@
 <div class="header-div">
   <h1 class="logo">Logo</h1>
   <input type="checkbox" id="nav-toggle" class="nav-toggle">
+  <input type="checkbox" id="goto-toggle" class="goto-toggle">
   <nav>
     <ul>
       <li><a routerLink="/home">Home
@@ -10,10 +11,14 @@
         </a></li>
       <li><a routerLink="/example/home">Example</a></li>
       <li><a routerLink="/sandbox/home">Sandbox</a></li>
-      <li *ngIf="includeSandbox">
-        <a class="navbar-goto-li">
+      <li><a routerLink="/sandbox/home"><i class="fas fa-angle-down"></i></a></li>
+      <li *ngIf="includeSandbox" class="navbar-goto-li">
+        <a id="navbar-goto-li-a">
           GOTO
         </a>
+        <i class="fa fa-angle-down"></i>
+        <label for="goto-toggle-li-a" class="goto-toggle-label">
+          </label>
         <div>
           <a class="dropdown-item" routerLink="example/sc/login">Spring Clound Login</a>
           <a class="dropdown-item" routerLink="example/employees">Employee List</a>

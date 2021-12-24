@@ -99,6 +99,14 @@ nav a:hover {
   transition: opacity 250ms ease-in-out 250ms;
 }
 
+.goto-toggle {
+  display: none;
+}
+
+.goto-toggle-label {
+  display: block;
+}
+
 .navbar-goto-li {
   background: var(--background);
 }
