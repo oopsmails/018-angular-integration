@@ -10,12 +10,46 @@
         </a></li>
       <li><a routerLink="/example/home">Example</a></li>
       <li><a routerLink="/sandbox/home">Sandbox</a></li>
-      <li><a routerLink="/sandbox/home">Sandbox</a></li>
-      <li><a href="#">contact</a></li>
+      <li *ngIf="includeSandbox">
+        <a class="navbar-goto-li">
+          GOTO
+        </a>
+        <div>
+          <a class="dropdown-item" routerLink="example/sc/login">Spring Clound Login</a>
+          <a class="dropdown-item" routerLink="example/employees">Employee List</a>
+          <a class="dropdown-item" routerLink="example/oauthtoken">Spring Cloud All - OAuth Token</a>
+          <a class="dropdown-item" routerLink="example/3ways">Between Components 3 Ways</a>
+          <a class="dropdown-item" routerLink="/sandbox/home">SandboxHome-LiveUpdate-ChangeDetector</a>
+          <a class="dropdown-item" routerLink="sandbox/msgbtw">Message Between Demo</a>
+          <a class="dropdown-item" routerLink="/sandbox/svgcircleok">SVG Spinner onload</a>
+          <a class="dropdown-item" routerLink="/sandbox/svgcircle">SVG Spinner</a>
+          <a class="dropdown-item" routerLink="example/pagination">Pagination</a>
+        </div>
+      </li>
     </ul>
+
+    <!-- <ul class="navbar-goto">
+      <li *ngIf="includeSandbox" class="navbar-goto-li">
+        <a ngbDropdownToggle class="nav-link dropdown-toggle" id="navDropdownSandbox" 
+          role="botton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          GOTO
+        </a>
+        <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="navDropdownSandbox">
+          <a class="dropdown-item" routerLink="example/sc/login">Spring Clound Login</a>
+          <a class="dropdown-item" routerLink="example/employees">Employee List</a>
+          <a class="dropdown-item" routerLink="example/oauthtoken">Spring Cloud All - OAuth Token</a>
+          <a class="dropdown-item" routerLink="example/3ways">Between Components 3 Ways</a>
+          <a class="dropdown-item" routerLink="/sandbox/home">SandboxHome-LiveUpdate-ChangeDetector</a>
+          <a class="dropdown-item" routerLink="sandbox/msgbtw">Message Between Demo</a>
+          <a class="dropdown-item" routerLink="/sandbox/svgcircleok">SVG Spinner onload</a>
+          <a class="dropdown-item" routerLink="/sandbox/svgcircle">SVG Spinner</a>
+          <a class="dropdown-item" routerLink="example/pagination">Pagination</a>
+          <a class="dropdown-item" (click)="logout()">Log Out</a>
+        </div>
+      </li>
+    </ul> -->
   </nav>
   <label for="nav-toggle" class="nav-toggle-label">
-    <!-- <span>X</span> -->
     <span></span>
   </label>
 </div>
