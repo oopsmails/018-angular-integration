@@ -1,7 +1,6 @@
 <div class="header-div">
   <h1 class="logo">Logo</h1>
   <input type="checkbox" id="nav-toggle" class="nav-toggle">
-  <input type="checkbox" id="goto-toggle" class="goto-toggle">
   <nav>
     <ul>
       <li><a routerLink="/home">Home
@@ -11,48 +10,26 @@
         </a></li>
       <li><a routerLink="/example/home">Example</a></li>
       <li><a routerLink="/sandbox/home">Sandbox</a></li>
-      <li><a routerLink="/sandbox/home"><i class="fas fa-angle-down"></i></a></li>
-      <li *ngIf="includeSandbox" class="navbar-goto-li">
-        <a id="navbar-goto-li-a">
-          GOTO
-        </a>
-        <i class="fa fa-angle-down"></i>
-        <label for="goto-toggle-li-a" class="goto-toggle-label">
-          </label>
-        <div>
-          <a class="dropdown-item" routerLink="example/sc/login">Spring Clound Login</a>
-          <a class="dropdown-item" routerLink="example/employees">Employee List</a>
-          <a class="dropdown-item" routerLink="example/oauthtoken">Spring Cloud All - OAuth Token</a>
-          <a class="dropdown-item" routerLink="example/3ways">Between Components 3 Ways</a>
-          <a class="dropdown-item" routerLink="/sandbox/home">SandboxHome-LiveUpdate-ChangeDetector</a>
-          <a class="dropdown-item" routerLink="sandbox/msgbtw">Message Between Demo</a>
-          <a class="dropdown-item" routerLink="/sandbox/svgcircleok">SVG Spinner onload</a>
-          <a class="dropdown-item" routerLink="/sandbox/svgcircle">SVG Spinner</a>
-          <a class="dropdown-item" routerLink="example/pagination">Pagination</a>
-        </div>
-      </li>
-    </ul>
 
-    <!-- <ul class="navbar-goto">
-      <li *ngIf="includeSandbox" class="navbar-goto-li">
-        <a ngbDropdownToggle class="nav-link dropdown-toggle" id="navDropdownSandbox" 
-          role="botton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          GOTO
-        </a>
-        <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="navDropdownSandbox">
-          <a class="dropdown-item" routerLink="example/sc/login">Spring Clound Login</a>
-          <a class="dropdown-item" routerLink="example/employees">Employee List</a>
-          <a class="dropdown-item" routerLink="example/oauthtoken">Spring Cloud All - OAuth Token</a>
-          <a class="dropdown-item" routerLink="example/3ways">Between Components 3 Ways</a>
-          <a class="dropdown-item" routerLink="/sandbox/home">SandboxHome-LiveUpdate-ChangeDetector</a>
-          <a class="dropdown-item" routerLink="sandbox/msgbtw">Message Between Demo</a>
-          <a class="dropdown-item" routerLink="/sandbox/svgcircleok">SVG Spinner onload</a>
-          <a class="dropdown-item" routerLink="/sandbox/svgcircle">SVG Spinner</a>
-          <a class="dropdown-item" routerLink="example/pagination">Pagination</a>
-          <a class="dropdown-item" (click)="logout()">Log Out</a>
-        </div>
+      <li *ngIf="includeSandbox">
+        <input type="checkbox" id="goto-toggle" class="goto-toggle">
+        <label for="goto-toggle" class="goto-toggle-label">
+          GOTO <i class="fas fa-angle-down navbar-goto-li-angle-down"></i>
+        </label>
+        <ul class="navbar-goto-li-ul">
+          <li><a routerLink="example/sc/login">Spring Clound Login</a></li>
+          <li><a routerLink="example/employees">Employee List</a></li>
+          <li><a routerLink="example/oauthtoken">Spring Cloud All - OAuth Token</a></li>
+          <li><a routerLink="example/3ways">Between Components 3 Ways</a></li>
+          <li><a routerLink="/sandbox/home">SandboxHome-LiveUpdate-ChangeDetector</a></li>
+          <li><a routerLink="sandbox/msgbtw">Message Between Demo</a></li>
+          <li><a routerLink="/sandbox/svgcircleok">SVG Spinner onload</a></li>
+          <li><a routerLink="/sandbox/svgcircle">SVG Spinner</a></li>
+          <li><a routerLink="example/pagination">Pagination</a></li>
+        </ul>
       </li>
-    </ul> -->
+
+    </ul>
   </nav>
   <label for="nav-toggle" class="nav-toggle-label">
     <span></span>
