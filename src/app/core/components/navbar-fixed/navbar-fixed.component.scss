@@ -1,17 +1,18 @@
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
-  text-transform: capitalize;
-  text-decoration: none;
-}
+// * {
+//   margin: 0;
+//   padding: 0;
+//   box-sizing: border-box;
+//   font-family: Arial, Helvetica, sans-serif;
+//   text-transform: capitalize;
+//   text-decoration: none;
+// }
 
 // 01: Global variables are defined in '/src/assets/scss/_variables.scss'
 .header-div {
   background: var(--nav-background);
   text-align: center;
+  height: var(--nav-height);
   position: fixed;
   z-index: 999;
   width: 100%;
@@ -157,7 +158,8 @@ nav {
 
   .header-div {
     display: grid;
-    padding: 1% 7%;
+    padding: 0.75em 7%;
+    height: var(--nav-height);
     grid-template-columns: 0.25fr auto minmax(600px, 1fr) 0.75fr;
   }
 
