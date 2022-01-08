@@ -1,0 +1,37 @@
+<div class="header-div">
+  <h1 class="logo">L<fa-icon [icon]="faCoffee" size="0.25x"></fa-icon>G<fa-icon [icon]="faCoffee" size="0.25x"></fa-icon></h1>
+  <input type="checkbox" id="nav-toggle" class="nav-toggle">
+  <nav>
+    <ul>
+      <li><a routerLink="/home">Home
+          <span class="badge-num">
+            0
+          </span>
+        </a></li>
+      <li><a routerLink="/example/home">Example</a></li>
+      <li><a routerLink="/sandbox/home">Sandbox</a></li>
+
+      <li *ngIf="includeSandbox">
+        <input type="checkbox" id="goto-toggle" class="goto-toggle">
+        <label for="goto-toggle" class="goto-toggle-label">
+          GOTO <fa-icon [icon]="faAngleDown"></fa-icon>
+        </label>
+        <ul class="navbar-goto-li-ul">
+          <li><a routerLink="example/sc/login">Spring Clound Login</a></li>
+          <li><a routerLink="example/employees">Employee List</a></li>
+          <li><a routerLink="example/oauthtoken">Spring Cloud All - OAuth Token</a></li>
+          <li><a routerLink="example/3ways">Between Components 3 Ways</a></li>
+          <li><a routerLink="/sandbox/home">SandboxHome-LiveUpdate-ChangeDetector</a></li>
+          <li><a routerLink="sandbox/msgbtw">Message Between Demo</a></li>
+          <li><a routerLink="/sandbox/svgcircleok">SVG Spinner onload</a></li>
+          <li><a routerLink="/sandbox/svgcircle">SVG Spinner</a></li>
+          <li><a routerLink="example/pagination">Pagination</a></li>
+        </ul>
+      </li>
+
+    </ul>
+  </nav>
+  <label for="nav-toggle" class="nav-toggle-label">
+    <span></span>
+  </label>
+</div>

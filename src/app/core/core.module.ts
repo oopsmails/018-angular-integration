@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavbarBsComponent } from './components/navbar-bs/navbar-bs.component';
+import { NavbarFixedComponent } from './components/navbar-fixed/navbar-fixed.component';
 import { HomeComponent } from './components/home/home.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { SharedModule } from '../shared/shared.module';
@@ -12,6 +13,7 @@ import { FooterComponent } from './components/footer/footer.component';
 @NgModule({
   declarations: [
     NavbarBsComponent,
+    NavbarFixedComponent,
     HomeComponent,
     NotFoundComponent,
     ElementChangingDirective,
@@ -25,6 +27,7 @@ import { FooterComponent } from './components/footer/footer.component';
   ],
   exports: [
     NavbarBsComponent,
+    NavbarFixedComponent,
     HomeComponent,
     FooterComponent,
     NotFoundComponent,

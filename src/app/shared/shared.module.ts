@@ -3,7 +3,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 
 import { ErrorDisplayComponent } from './common/error-display/error-display.component';
 import { ErrorDisplayService } from './common/error-display/error-display.service';
@@ -21,18 +21,18 @@ import { WINDOW_PROVIDERS } from './services/window-provider.service';
   imports: [
     CommonModule,
     BrowserModule,
+    FontAwesomeModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule,
-    NgbModule
+    HttpClientModule
   ],
   exports: [
     CommonModule,
     BrowserModule,
+    FontAwesomeModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule,
-    NgbModule
+    HttpClientModule
   ],
   providers: [
     LoginService,
