@@ -1,0 +1,18 @@
+.footer {
+    position: relative;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    text-align: center;
+}
+
+
+.footerBk {
+    position: fixed;
+    // position: relative;
+    bottom: 0px;
+    background-color: pink;
+    text-align: center;
+    width: 100%;
+}

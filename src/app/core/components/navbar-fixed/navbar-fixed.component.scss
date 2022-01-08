@@ -12,6 +12,7 @@
 .header-div {
   background: var(--nav-background);
   text-align: center;
+  height: var(--nav-height);
   position: fixed;
   z-index: 999;
   width: 100%;
@@ -157,7 +158,8 @@ nav {
 
   .header-div {
     display: grid;
-    padding: 1% 7%;
+    padding: 0.75em 7%;
+    height: var(--nav-height);
     grid-template-columns: 0.25fr auto minmax(600px, 1fr) 0.75fr;
   }
 
