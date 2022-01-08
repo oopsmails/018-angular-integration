@@ -155,9 +155,9 @@ nav {
     display: none;
   }
 
-  header {
+  .header-div {
     display: grid;
-    grid-template-columns: 1fr auto minmax(600px, 1fr) 1fr;
+    grid-template-columns: 0.25fr auto minmax(600px, 1fr) 0.75fr;
   }
 
   .logo {
@@ -181,40 +181,70 @@ nav {
     display: flex;
     justify-content: flex-end;
     align-items: center;
+
+    // ul {
+    //   border: 1px solid red;
+    // }
+
+    li {
+      position: relative;
+      float: left;
+      margin-left: 3em;
+      margin-bottom: 0;
+    }
+
+    a {
+      opacity: 1;
+    }
+
   }
 
-  nav ul {
-    display: flex;
-    /* justify-content: flex-end; */
-    /* border: 1px solid red; */
+  .goto-toggle-label {
+    color: white;
+    text-decoration: none;
+    font-size: var(--nav-a-font-size);
   }
 
-  nav li {
-    margin-left: 3em;
-    margin-bottom: 0;
-  }
-
-  nav a {
-    opacity: 1;
-    position: relative;
-  }
-
-  nav a::before {
-    content: '';
-    display: block;
-    height: 5px;
-    background-color: black;
+  .navbar-goto-li-angle-down {
+    color: white;
     position: absolute;
-    /* top: -.75em; */
-    bottom: -.75em;
-    left: 0;
-    right: 0;
-    transform: scale(0, 1);
-    transform-origin: left;
-    transition: transform ease-in-out 250ms;
+    text-align: left;
+    margin-left: 10px;
   }
 
-  nav a:hover:before {
+  .navbar-goto-li-ul {
+    border: 1px solid red;
+    position: relative;
+    text-align: right;
+    background-color: var(--nav-background);
+    position: absolute;
+    right: -55%;
+    // width: 400px;
+    width: auto;
+    // width: fit-content(20em);
+    text-align: right;
+    transform: scale(1, 0);
+    transform-origin: top;
+    transition: transform 2500ms ease-in-out;
+    display: none;
+
+
+    li {
+      margin-right: 1em;
+    }
+
+    a {
+      color: white;
+      text-decoration: none;
+      font-size: 1rem;
+      text-transform: uppercase;
+      opacity: 1;
+      transition: opacity 150ms ease-in-out;
+    }
+  }
+
+  .goto-toggle:checked~ul {
+    display: block;
     transform: scale(1, 1);
   }
 }
