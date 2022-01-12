@@ -1,4 +1,3 @@
-
 // * {
 //   margin: 0;
 //   padding: 0;
@@ -144,7 +143,9 @@ nav {
 
 }
 
-.goto-toggle:checked~ul {
+// will revise!!!
+.header-div nav ul li:focus-within>ul,
+.header-div nav ul li:hover>ul {
   display: block;
   transform: scale(1, 1);
 }
@@ -250,8 +251,17 @@ nav {
     }
   }
 
-  .goto-toggle:checked~ul {
-    display: block;
+  // will revise! due to gap filled by <div class="navbar-fix-place-holder"></div>, it is difficult to use hover
+
+  // .header-div nav ul li:focus-within>ul,
+  // .header-div nav ul li:hover>ul {
+  //   display: block;
+  //   transform: scale(1, 1);
+  // }
+
+  // .header-div nav ul li:focus-within>.navbar-goto-li-ul,
+  .header-div nav ul li:hover>.navbar-goto-li-ul {
+    display: initial;
     transform: scale(1, 1);
   }
 }
