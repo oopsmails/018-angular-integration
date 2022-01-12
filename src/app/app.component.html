@@ -1,6 +1,17 @@
 <navbar-fixed></navbar-fixed>
-<!-- this is a place holder for fixed nav bar, in order to show 
-real content after the fixed nav bar. Global variable --nav-height: 4em; -->
+<!-- 
+    This is a place holder for fixed nav bar, in order to show 
+    real content after the fixed nav bar. Global variable --nav-height: 4em; 
+
+    Another way of doing this is, instead of using this place holder, we make
+    <div class="mainContainer">, and use following in scss of each component.
+        .mainContainer {
+            position: relative;
+            top: calc(var(--nav-height) + 10px);
+        }
+
+    Will try second way in future.
+-->
 <div class="navbar-fix-place-holder"></div>
 <router-outlet></router-outlet>
 <!-- app-footer is always at bottom -->

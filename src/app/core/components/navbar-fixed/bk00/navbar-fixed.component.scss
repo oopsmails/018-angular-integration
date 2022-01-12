@@ -1,0 +1,267 @@
+// * {
+//   margin: 0;
+//   padding: 0;
+//   box-sizing: border-box;
+//   font-family: Arial, Helvetica, sans-serif;
+//   text-transform: capitalize;
+//   text-decoration: none;
+// }
+
+// 01: Global variables are defined in '/src/assets/scss/_variables.scss'
+.header-div {
+  background: var(--nav-background);
+  text-align: center;
+  height: var(--nav-height);
+  position: fixed;
+  z-index: 999;
+  width: 100%;
+}
+
+.nav-toggle {
+  display: none;
+}
+
+.nav-toggle-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-left: var(--hamburger-margin-left);
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.nav-toggle-label span,
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+  display: block;
+  background-color: white;
+  height: 2px;
+  width: 2em;
+  border-radius: 2px;
+  position: relative;
+}
+
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+  content: '';
+  position: absolute;
+}
+
+.nav-toggle-label span::before {
+  bottom: 7px;
+}
+
+.nav-toggle-label span::after {
+  top: 7px;
+}
+
+nav {
+  position: absolute;
+  text-align: left;
+  top: 100%;
+  left: 0;
+  background: var(--nav-background);
+  width: 100%;
+  transform: scale(1, 0);
+  transform-origin: top;
+  transition: transform 250ms ease-in-out;
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    margin-bottom: var(--nav-item-margin-bottom);
+    margin-left: var(--hamburger-margin-left);
+  }
+
+  a {
+    color: white;
+    text-decoration: none;
+    font-size: var(--nav-a-font-size);
+    text-transform: uppercase;
+    opacity: 0;
+    transition: opacity 150ms ease-in-out;
+  }
+
+  a:hover {
+    color: #000;
+  }
+}
+
+
+.nav-toggle:checked~nav {
+  transform: scale(1, 1);
+
+  a {
+    opacity: 1;
+    transition: opacity 250ms ease-in-out 250ms;
+  }
+}
+
+// GOTO ///////////////////////////
+.goto-toggle {
+  display: none;
+}
+
+.goto-toggle-label {
+  color: white;
+  text-decoration: none;
+  font-size: var(--nav-a-font-size);
+}
+
+.navbar-goto-li-angle-down {
+  color: white;
+  margin-left: 10px;
+}
+
+.navbar-goto-li-ul {
+  border: 1px solid yellow;
+  margin-left: var(--hamburger-margin-left);
+  font-size: var(--nav-a-font-size);
+  text-align: left;
+  width: 100%;
+  transform-origin: top;
+  transition: transform 250ms ease-in-out;
+  margin-top: var(--nav-item-margin-bottom) !important;
+  padding: 0;
+  list-style: none;
+  transform: scale(1, 0);
+  display: none;
+
+  a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    text-transform: uppercase;
+    opacity: 0;
+    transition: opacity 150ms ease-in-out;
+  }
+
+}
+
+// will revise!!!
+.header-div nav ul li:focus-within>ul,
+.header-div nav ul li:hover>ul {
+  display: block;
+  transform: scale(1, 1);
+}
+
+// 02: Bigger size
+
+@media screen and (min-width: 800px) {
+  .nav-toggle-label {
+    display: none;
+  }
+
+  .header-div {
+    display: grid;
+    padding: 0.75em 7%;
+    height: var(--nav-height);
+    grid-template-columns: 0.25fr auto minmax(600px, 1fr) 0.75fr;
+  }
+
+  .logo {
+    grid-column: 2 / span 1;
+  }
+
+  nav {
+    all: unset;
+
+    /* the following lines are not from my video, but add Edge support */
+    position: relative;
+    text-align: left;
+    transition: none;
+    transform: scale(1, 1);
+    background: none;
+    top: initial;
+    left: initial;
+    /* end Edge support stuff */
+
+    grid-column: 3 / 4;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    // ul {
+    //   border: 1px solid red;
+    // }
+
+    li {
+      position: relative;
+      float: left;
+      margin-left: 3em;
+      margin-bottom: 0;
+    }
+
+    a {
+      opacity: 1;
+    }
+
+  }
+
+  .goto-toggle-label {
+    color: white;
+    text-decoration: none;
+    font-size: var(--nav-a-font-size);
+  }
+
+  .goto-toggle-label:hover {
+    color: #000;
+  }
+
+  .navbar-goto-li-angle-down {
+    color: white;
+    position: absolute;
+    text-align: left;
+    margin-left: 10px;
+  }
+
+  .navbar-goto-li-ul {
+    border: 1px solid red;
+    position: relative;
+    text-align: right;
+    background-color: var(--nav-background);
+    position: absolute;
+    right: -55%;
+    // width: 400px;
+    width: auto;
+    // width: fit-content(20em);
+    text-align: right;
+    transform: scale(1, 0);
+    transform-origin: top;
+    transition: transform 2500ms ease-in-out;
+    display: none;
+
+
+    li {
+      margin-right: 1em;
+    }
+
+    a {
+      color: white;
+      text-decoration: none;
+      font-size: 1rem;
+      text-transform: uppercase;
+      opacity: 1;
+      transition: opacity 150ms ease-in-out;
+    }
+  }
+
+  // will revise! due to gap filled by <div class="navbar-fix-place-holder"></div>, it is difficult to use hover
+
+  // .header-div nav ul li:focus-within>ul,
+  // .header-div nav ul li:hover>ul {
+  //   display: block;
+  //   transform: scale(1, 1);
+  // }
+
+  // .header-div nav ul li:focus-within>.navbar-goto-li-ul,
+  .header-div nav ul li:hover>.navbar-goto-li-ul {
+    display: initial;
+    transform: scale(1, 1);
+  }
+}

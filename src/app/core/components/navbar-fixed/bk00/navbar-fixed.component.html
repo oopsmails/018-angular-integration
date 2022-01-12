@@ -1,10 +1,7 @@
 <div class="header-div">
-  <a href="#" class="logo">LOGO</a>
-
-  <input type="checkbox" id="menu-bar">
-  <label for="menu-bar">Menu</label>
-
-  <nav class="navbar">
+  <h1 class="logo">LOGO</h1>
+  <input type="checkbox" id="nav-toggle" class="nav-toggle">
+  <nav>
     <ul>
       <li><a routerLink="/home">Home
           <span class="badge-num">
@@ -13,12 +10,13 @@
         </a></li>
       <li><a routerLink="/example/home">Example</a></li>
       <li><a routerLink="/sandbox/home">Sandbox</a></li>
-      <li>
-        <a routerLink="#">
-          GOTO
-          <fa-icon [icon]="faAngleDown"></fa-icon>
-        </a>
-        <ul>
+
+      <li *ngIf="includeSandbox">
+        <input type="checkbox" id="goto-toggle" class="goto-toggle">
+        <label for="goto-toggle" class="goto-toggle-label">
+          GOTO <fa-icon [icon]="faAngleDown"></fa-icon>
+        </label>
+        <ul class="navbar-goto-li-ul">
           <li><a routerLink="example/sc/login">Spring Clound Login</a></li>
           <li><a routerLink="example/employees">Employee List</a></li>
           <li><a routerLink="example/oauthtoken">Spring Cloud All - OAuth Token</a></li>
@@ -33,4 +31,7 @@
 
     </ul>
   </nav>
+  <label for="nav-toggle" class="nav-toggle-label">
+    <span></span>
+  </label>
 </div>
