@@ -1,0 +1,18 @@
+.card {
+    margin: 20px 20px;
+    box-shadow: 10px 5px 5px rgba(34, 29, 29, 0.1);
+}
+
+.cta {
+    padding: 15px 0px 15px 0px;
+}
+
+.cta-tellme {
+    background: var(--primary-color);
+    width: 100px;
+    height: 40px;
+    cursor: pointer;
+    font-size: 16px;
+    border: none;
+    color: white;
+}
