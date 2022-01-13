@@ -1,25 +1,26 @@
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<h3>Messaging between components ... </h3>
-<hr>
-<br>
-<app-msg-between></app-msg-between>
-<hr>
-<br>
-<app-msg-child1></app-msg-child1>
-<hr>
-<br>
-<app-msg-child2></app-msg-child2>
-<hr>
-<br>
-<app-msg-child4 (postData) = "onAddPost($event)"></app-msg-child4>
-<hr>
-<br>
-<app-msg-child5 [listPost] = "postDataArr"></app-msg-child5>
-<hr>
-<br>
-
+<div class="mainContainer">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h3>Messaging between components ... </h3>
+    <hr>
+    <br>
+    <app-msg-between></app-msg-between>
+    <hr>
+    <br>
+    <app-msg-child1></app-msg-child1>
+    <hr>
+    <br>
+    <app-msg-child2></app-msg-child2>
+    <hr>
+    <br>
+    <app-msg-child4 (postData)="onAddPost($event)"></app-msg-child4>
+    <hr>
+    <br>
+    <app-msg-child5 [listPost]="postDataArr"></app-msg-child5>
+    <hr>
+    <br>
+</div>

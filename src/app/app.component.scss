@@ -2,4 +2,5 @@
     // border: 1px solid red;
     position: relative;
     height: var(--nav-height);
+    z-index: -1000;
 }

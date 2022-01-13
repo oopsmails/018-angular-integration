@@ -1,24 +1,32 @@
 /* You can add global styles to this file, and also import other style files */
-
 @import url('https://fonts.googleapis.com/css?family=Work+Sans:300,600');
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
 
-@import '/src/assets/scss/_variables.scss';
-
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
-    text-transform: capitalize;
-    text-decoration: none;
- }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  // font-family: Arial, Helvetica, sans-serif;
+}
 
 html,
 body {
   height: 100%;
 }
 
-.container {
-    border: 1px solid blue;
+// Global Variables
+:root {
+  --primary-color: rgba(0, 214, 170, .85);
+  --hamburger-margin-left: 1em;
+  --nav-item-margin-bottom: 1em;
+  --nav-a-font-size: 1.2rem;
+  --nav-height: 4em;
+}
+
+// mainContainer for every page
+.mainContainer {
+  border: 1px solid red; // to test every page, will be removed
+  position: relative;
+  padding: 5px;
 }
